@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eu.fort.dao.OrderInfoDao">
+    <!-- OrderInfo的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_OrderInfo_Map" type="com.eu.fort.entity.OrderInfo">
+        <id column="order_id" property="orderId" />
+        <result column="user_id" property="userId" />
+        <result column="create_time" property="createTime" />
+        <result column="finish_time" property="finishTime" />
+        <result column="order_state" property="orderState" />
+        <result column="order_totalprice" property="orderTotalprice" />
+        <result column="order_nprice" property="orderNprice" />
+        <result column="pay_way" property="payWay" />
+        <result column="fact_pay" property="factPay" />
+        <result column="paytime" property="paytime" />
+    </resultMap>
+
+    <!-- 数据库中表名为:order_info的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="order_info_Column">
+        order_info.order_id as order_id
+        ,order_info.user_id as user_id
+        ,order_info.create_time as create_time
+        ,order_info.finish_time as finish_time
+        ,order_info.order_state as order_state
+        ,order_info.order_totalprice as order_totalprice
+        ,order_info.order_nprice as order_nprice
+        ,order_info.pay_way as pay_way
+        ,order_info.fact_pay as fact_pay
+        ,order_info.paytime as paytime
+    </sql>
+
+    <!--获得类名为:OrderInfo对应的数据库表的数据总行数 -->
+    <select id="getOrderInfoRowCount" resultType="java.lang.Long">
+        select count(order_id) from order_info
+    </select>
+    <!-- 获得类名为:OrderInfo对应数据库中表的数据集合 -->
+    <select id="selectOrderInfo" resultMap="result_OrderInfo_Map">
+        select 
+        <include refid="order_info_Column" /> 
+        from order_info
+    </select> 
+
+    <!-- 获得一个OrderInfo对象,以参数OrderInfo对象中不为空的属性作为条件进行查询-->
+    <select id="selectOrderInfoByObj" parameterType="com.eu.fort.entity.OrderInfo" resultMap="result_OrderInfo_Map">
+        select 
+            <include refid="order_info_Column" /> 
+        from order_info
+        <where>
+            <if test="paytime != null "> and order_info.paytime = #{paytime}</if>
+            <if test="factPay != null "> and order_info.fact_pay = #{factPay}</if>
+            <if test="payWay != null "> and order_info.pay_way = #{payWay}</if>
+            <if test="orderNprice != null "> and order_info.order_nprice = #{orderNprice}</if>
+            <if test="orderTotalprice != null "> and order_info.order_totalprice = #{orderTotalprice}</if>
+            <if test="orderState != null "> and order_info.order_state = #{orderState}</if>
+            <if test="finishTime != null "> and order_info.finish_time = #{finishTime}</if>
+            <if test="createTime != null "> and order_info.create_time = #{createTime}</if>
+            <if test="userId != null "> and order_info.user_id = #{userId}</if>
+            <if test="orderId != null "> and order_info.order_id = #{orderId}</if>
+        </where>
+    </select> 
+
+    <!-- 通过OrderInfo的id获得对应数据库中表的数据对象-->
+    <select id="selectOrderInfoById" parameterType="java.lang.Integer" resultMap="result_OrderInfo_Map">
+        select 
+            <include refid="order_info_Column" /> 
+        from order_info
+        where order_info.order_id = #{id}
+    </select> 
+
+    <!-- 将OrderInfo插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertOrderInfo" parameterType="com.eu.fort.entity.OrderInfo">
+        insert into order_info(order_id,user_id,create_time,finish_time,order_state,order_totalprice,order_nprice,pay_way,fact_pay,paytime) 
+        values(#{orderId},#{userId},#{createTime},#{finishTime},#{orderState},#{orderTotalprice},#{orderNprice},#{payWay},#{factPay},#{paytime})
+    </insert>
+
+    <!-- 将OrderInfo中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyOrderInfo" parameterType="com.eu.fort.entity.OrderInfo">
+        insert into order_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="finishTime != null">finish_time,</if>
+            <if test="orderState != null">order_state,</if>
+            <if test="orderTotalprice != null">order_totalprice,</if>
+            <if test="orderNprice != null">order_nprice,</if>
+            <if test="payWay != null">pay_way,</if>
+            <if test="factPay != null">fact_pay,</if>
+            <if test="paytime != null">paytime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null"> #{orderId},</if>
+            <if test="userId != null"> #{userId},</if>
+            <if test="createTime != null"> #{createTime},</if>
+            <if test="finishTime != null"> #{finishTime},</if>
+            <if test="orderState != null"> #{orderState},</if>
+            <if test="orderTotalprice != null"> #{orderTotalprice},</if>
+            <if test="orderNprice != null"> #{orderNprice},</if>
+            <if test="payWay != null"> #{payWay},</if>
+            <if test="factPay != null"> #{factPay},</if>
+            <if test="paytime != null"> #{paytime},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过OrderInfo的id将数据库表中对应的数据删除-->
+    <delete id="deleteOrderInfoById" parameterType="java.lang.Integer">
+        delete from order_info
+        where order_id = #{id}
+    </delete>
+
+    <!-- 通过OrderInfo的id将OrderInfo的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateOrderInfoById" parameterType="com.eu.fort.entity.OrderInfo">
+        update order_info set
+            user_id=#{userId}
+            ,create_time=#{createTime}
+            ,finish_time=#{finishTime}
+            ,order_state=#{orderState}
+            ,order_totalprice=#{orderTotalprice}
+            ,order_nprice=#{orderNprice}
+            ,pay_way=#{payWay}
+            ,fact_pay=#{factPay}
+            ,paytime=#{paytime}
+        where order_id=#{orderId}
+    </update>
+
+    <!-- 通过OrderInfo的id将OrderInfo中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyOrderInfoById" parameterType="com.eu.fort.entity.OrderInfo">
+        update order_info
+        <set>
+            <if test="userId != null">
+                user_id=#{userId},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="finishTime != null">
+                finish_time=#{finishTime},
+            </if>
+            <if test="orderState != null">
+                order_state=#{orderState},
+            </if>
+            <if test="orderTotalprice != null">
+                order_totalprice=#{orderTotalprice},
+            </if>
+            <if test="orderNprice != null">
+                order_nprice=#{orderNprice},
+            </if>
+            <if test="payWay != null">
+                pay_way=#{payWay},
+            </if>
+            <if test="factPay != null">
+                fact_pay=#{factPay},
+            </if>
+            <if test="paytime != null">
+                paytime=#{paytime},
+            </if>
+        </set>
+        where order_id=#{orderId}
+    </update>
+
+</mapper>

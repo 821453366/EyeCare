@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eu.fort.dao.EyeEmpDao">
+    <!-- EyeEmp的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_EyeEmp_Map" type="com.eu.fort.entity.EyeEmp">
+        <id column="emp_id" property="empId" />
+        <result column="emp_name" property="empName" />
+        <result column="emp_phone" property="empPhone" />
+        <result column="emp_state" property="empState" />
+        <result column="emp_img" property="empImg" />
+        <result column="emp_sex" property="empSex" />
+        <result column="emp_time" property="empTime" />
+        <result column="emp_desc" property="empDesc" />
+    </resultMap>
+
+    <!-- 数据库中表名为:eye_emp的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="eye_emp_Column">
+        eye_emp.emp_id as emp_id
+        ,eye_emp.emp_name as emp_name
+        ,eye_emp.emp_phone as emp_phone
+        ,eye_emp.emp_state as emp_state
+        ,eye_emp.emp_img as emp_img
+        ,eye_emp.emp_sex as emp_sex
+        ,eye_emp.emp_time as emp_time
+        ,eye_emp.emp_desc as emp_desc
+    </sql>
+
+    <!--获得类名为:EyeEmp对应的数据库表的数据总行数 -->
+    <select id="getEyeEmpRowCount" resultType="java.lang.Long">
+        select count(emp_id) from eye_emp
+    </select>
+    <!-- 获得类名为:EyeEmp对应数据库中表的数据集合 -->
+    <select id="selectEyeEmp" resultMap="result_EyeEmp_Map">
+        select 
+        <include refid="eye_emp_Column" /> 
+        from eye_emp
+    </select> 
+
+    <!-- 获得一个EyeEmp对象,以参数EyeEmp对象中不为空的属性作为条件进行查询-->
+    <select id="selectEyeEmpByObj" parameterType="com.eu.fort.entity.EyeEmp" resultMap="result_EyeEmp_Map">
+        select 
+            <include refid="eye_emp_Column" /> 
+        from eye_emp
+        <where>
+            <if test="empDesc != null "> and eye_emp.emp_desc = #{empDesc}</if>
+            <if test="empTime != null "> and eye_emp.emp_time = #{empTime}</if>
+            <if test="empSex != null "> and eye_emp.emp_sex = #{empSex}</if>
+            <if test="empImg != null "> and eye_emp.emp_img = #{empImg}</if>
+            <if test="empState != null "> and eye_emp.emp_state = #{empState}</if>
+            <if test="empPhone != null "> and eye_emp.emp_phone = #{empPhone}</if>
+            <if test="empName != null "> and eye_emp.emp_name = #{empName}</if>
+            <if test="empId != null "> and eye_emp.emp_id = #{empId}</if>
+        </where>
+    </select> 
+
+    <!-- 通过EyeEmp的id获得对应数据库中表的数据对象-->
+    <select id="selectEyeEmpById" parameterType="java.lang.Integer" resultMap="result_EyeEmp_Map">
+        select 
+            <include refid="eye_emp_Column" /> 
+        from eye_emp
+        where eye_emp.emp_id = #{id}
+    </select> 
+
+    <!-- 将EyeEmp插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertEyeEmp" parameterType="com.eu.fort.entity.EyeEmp">
+        insert into eye_emp(emp_id,emp_name,emp_phone,emp_state,emp_img,emp_sex,emp_time,emp_desc) 
+        values(#{empId},#{empName},#{empPhone},#{empState},#{empImg},#{empSex},#{empTime},#{empDesc})
+    </insert>
+
+    <!-- 将EyeEmp中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyEyeEmp" parameterType="com.eu.fort.entity.EyeEmp">
+        insert into eye_emp
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empId != null">emp_id,</if>
+            <if test="empName != null">emp_name,</if>
+            <if test="empPhone != null">emp_phone,</if>
+            <if test="empState != null">emp_state,</if>
+            <if test="empImg != null">emp_img,</if>
+            <if test="empSex != null">emp_sex,</if>
+            <if test="empTime != null">emp_time,</if>
+            <if test="empDesc != null">emp_desc,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="empId != null"> #{empId},</if>
+            <if test="empName != null"> #{empName},</if>
+            <if test="empPhone != null"> #{empPhone},</if>
+            <if test="empState != null"> #{empState},</if>
+            <if test="empImg != null"> #{empImg},</if>
+            <if test="empSex != null"> #{empSex},</if>
+            <if test="empTime != null"> #{empTime},</if>
+            <if test="empDesc != null"> #{empDesc},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过EyeEmp的id将数据库表中对应的数据删除-->
+    <delete id="deleteEyeEmpById" parameterType="java.lang.Integer">
+        delete from eye_emp
+        where emp_id = #{id}
+    </delete>
+
+    <!-- 通过EyeEmp的id将EyeEmp的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateEyeEmpById" parameterType="com.eu.fort.entity.EyeEmp">
+        update eye_emp set
+            emp_name=#{empName}
+            ,emp_phone=#{empPhone}
+            ,emp_state=#{empState}
+            ,emp_img=#{empImg}
+            ,emp_sex=#{empSex}
+            ,emp_time=#{empTime}
+            ,emp_desc=#{empDesc}
+        where emp_id=#{empId}
+    </update>
+
+    <!-- 通过EyeEmp的id将EyeEmp中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyEyeEmpById" parameterType="com.eu.fort.entity.EyeEmp">
+        update eye_emp
+        <set>
+            <if test="empName != null">
+                emp_name=#{empName},
+            </if>
+            <if test="empPhone != null">
+                emp_phone=#{empPhone},
+            </if>
+            <if test="empState != null">
+                emp_state=#{empState},
+            </if>
+            <if test="empImg != null">
+                emp_img=#{empImg},
+            </if>
+            <if test="empSex != null">
+                emp_sex=#{empSex},
+            </if>
+            <if test="empTime != null">
+                emp_time=#{empTime},
+            </if>
+            <if test="empDesc != null">
+                emp_desc=#{empDesc},
+            </if>
+        </set>
+        where emp_id=#{empId}
+    </update>
+
+</mapper>

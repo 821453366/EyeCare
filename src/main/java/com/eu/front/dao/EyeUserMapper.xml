@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eu.fort.dao.EyeUserDao">
+    <!-- EyeUser的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_EyeUser_Map" type="com.eu.fort.entity.EyeUser">
+        <id column="user_id" property="userId" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="birthday" property="birthday" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+        <result column="address" property="address" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <!-- 数据库中表名为:eye_user的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="eye_user_Column">
+        eye_user.user_id as user_id
+        ,eye_user.username as username
+        ,eye_user.password as password
+        ,eye_user.sex as sex
+        ,eye_user.age as age
+        ,eye_user.birthday as birthday
+        ,eye_user.phone as phone
+        ,eye_user.email as email
+        ,eye_user.address as address
+        ,eye_user.description as description
+    </sql>
+
+    <!--获得类名为:EyeUser对应的数据库表的数据总行数 -->
+    <select id="getEyeUserRowCount" resultType="java.lang.Long">
+        select count(user_id) from eye_user
+    </select>
+    <!-- 获得类名为:EyeUser对应数据库中表的数据集合 -->
+    <select id="selectEyeUser" resultMap="result_EyeUser_Map">
+        select 
+        <include refid="eye_user_Column" /> 
+        from eye_user
+    </select> 
+
+    <!-- 获得一个EyeUser对象,以参数EyeUser对象中不为空的属性作为条件进行查询-->
+    <select id="selectEyeUserByObj" parameterType="com.eu.fort.entity.EyeUser" resultMap="result_EyeUser_Map">
+        select 
+            <include refid="eye_user_Column" /> 
+        from eye_user
+        <where>
+            <if test="description != null "> and eye_user.description = #{description}</if>
+            <if test="address != null "> and eye_user.address = #{address}</if>
+            <if test="email != null "> and eye_user.email = #{email}</if>
+            <if test="phone != null "> and eye_user.phone = #{phone}</if>
+            <if test="birthday != null "> and eye_user.birthday = #{birthday}</if>
+            <if test="age != null "> and eye_user.age = #{age}</if>
+            <if test="sex != null "> and eye_user.sex = #{sex}</if>
+            <if test="password != null "> and eye_user.password = #{password}</if>
+            <if test="username != null "> and eye_user.username = #{username}</if>
+            <if test="userId != null "> and eye_user.user_id = #{userId}</if>
+        </where>
+    </select> 
+
+    <!-- 通过EyeUser的id获得对应数据库中表的数据对象-->
+    <select id="selectEyeUserById" parameterType="java.lang.Integer" resultMap="result_EyeUser_Map">
+        select 
+            <include refid="eye_user_Column" /> 
+        from eye_user
+        where eye_user.user_id = #{id}
+    </select> 
+
+    <!-- 将EyeUser插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertEyeUser" parameterType="com.eu.fort.entity.EyeUser">
+        insert into eye_user(user_id,username,password,sex,age,birthday,phone,email,address,description) 
+        values(#{userId},#{username},#{password},#{sex},#{age},#{birthday},#{phone},#{email},#{address},#{description})
+    </insert>
+
+    <!-- 将EyeUser中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyEyeUser" parameterType="com.eu.fort.entity.EyeUser">
+        insert into eye_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="username != null">username,</if>
+            <if test="password != null">password,</if>
+            <if test="sex != null">sex,</if>
+            <if test="age != null">age,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="phone != null">phone,</if>
+            <if test="email != null">email,</if>
+            <if test="address != null">address,</if>
+            <if test="description != null">description,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null"> #{userId},</if>
+            <if test="username != null"> #{username},</if>
+            <if test="password != null"> #{password},</if>
+            <if test="sex != null"> #{sex},</if>
+            <if test="age != null"> #{age},</if>
+            <if test="birthday != null"> #{birthday},</if>
+            <if test="phone != null"> #{phone},</if>
+            <if test="email != null"> #{email},</if>
+            <if test="address != null"> #{address},</if>
+            <if test="description != null"> #{description},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过EyeUser的id将数据库表中对应的数据删除-->
+    <delete id="deleteEyeUserById" parameterType="java.lang.Integer">
+        delete from eye_user
+        where user_id = #{id}
+    </delete>
+
+    <!-- 通过EyeUser的id将EyeUser的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateEyeUserById" parameterType="com.eu.fort.entity.EyeUser">
+        update eye_user set
+            username=#{username}
+            ,password=#{password}
+            ,sex=#{sex}
+            ,age=#{age}
+            ,birthday=#{birthday}
+            ,phone=#{phone}
+            ,email=#{email}
+            ,address=#{address}
+            ,description=#{description}
+        where user_id=#{userId}
+    </update>
+
+    <!-- 通过EyeUser的id将EyeUser中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyEyeUserById" parameterType="com.eu.fort.entity.EyeUser">
+        update eye_user
+        <set>
+            <if test="username != null">
+                username=#{username},
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="sex != null">
+                sex=#{sex},
+            </if>
+            <if test="age != null">
+                age=#{age},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+            <if test="description != null">
+                description=#{description},
+            </if>
+        </set>
+        where user_id=#{userId}
+    </update>
+
+</mapper>

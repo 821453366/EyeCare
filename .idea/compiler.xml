@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EyeCare" />
+        <module name="Recover" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="EyeCare" target="1.5" />
+      <module name="Recover" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

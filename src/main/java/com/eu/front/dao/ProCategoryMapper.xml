@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eu.fort.dao.ProCategoryDao">
+    <!-- ProCategory的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_ProCategory_Map" type="com.eu.fort.entity.ProCategory">
+        <id column="cat_id" property="catId" />
+        <result column="cat_name" property="catName" />
+        <result column="cat_brand" property="catBrand" />
+        <result column="cat_effect" property="catEffect" />
+    </resultMap>
+
+    <!-- 数据库中表名为:pro_category的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="pro_category_Column">
+        pro_category.cat_id as cat_id
+        ,pro_category.cat_name as cat_name
+        ,pro_category.cat_brand as cat_brand
+        ,pro_category.cat_effect as cat_effect
+    </sql>
+
+    <!--获得类名为:ProCategory对应的数据库表的数据总行数 -->
+    <select id="getProCategoryRowCount" resultType="java.lang.Long">
+        select count(cat_id) from pro_category
+    </select>
+    <!-- 获得类名为:ProCategory对应数据库中表的数据集合 -->
+    <select id="selectProCategory" resultMap="result_ProCategory_Map">
+        select 
+        <include refid="pro_category_Column" /> 
+        from pro_category
+    </select> 
+
+    <!-- 获得一个ProCategory对象,以参数ProCategory对象中不为空的属性作为条件进行查询-->
+    <select id="selectProCategoryByObj" parameterType="com.eu.fort.entity.ProCategory" resultMap="result_ProCategory_Map">
+        select 
+            <include refid="pro_category_Column" /> 
+        from pro_category
+        <where>
+            <if test="catEffect != null "> and pro_category.cat_effect = #{catEffect}</if>
+            <if test="catBrand != null "> and pro_category.cat_brand = #{catBrand}</if>
+            <if test="catName != null "> and pro_category.cat_name = #{catName}</if>
+            <if test="catId != null "> and pro_category.cat_id = #{catId}</if>
+        </where>
+    </select> 
+
+    <!-- 通过ProCategory的id获得对应数据库中表的数据对象-->
+    <select id="selectProCategoryById" parameterType="java.lang.Integer" resultMap="result_ProCategory_Map">
+        select 
+            <include refid="pro_category_Column" /> 
+        from pro_category
+        where pro_category.cat_id = #{id}
+    </select> 
+
+    <!-- 将ProCategory插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertProCategory" parameterType="com.eu.fort.entity.ProCategory">
+        insert into pro_category(cat_id,cat_name,cat_brand,cat_effect) 
+        values(#{catId},#{catName},#{catBrand},#{catEffect})
+    </insert>
+
+    <!-- 将ProCategory中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyProCategory" parameterType="com.eu.fort.entity.ProCategory">
+        insert into pro_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="catId != null">cat_id,</if>
+            <if test="catName != null">cat_name,</if>
+            <if test="catBrand != null">cat_brand,</if>
+            <if test="catEffect != null">cat_effect,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="catId != null"> #{catId},</if>
+            <if test="catName != null"> #{catName},</if>
+            <if test="catBrand != null"> #{catBrand},</if>
+            <if test="catEffect != null"> #{catEffect},</if>
+        </trim>
+    </insert>
+
+    <!-- 通过ProCategory的id将数据库表中对应的数据删除-->
+    <delete id="deleteProCategoryById" parameterType="java.lang.Integer">
+        delete from pro_category
+        where cat_id = #{id}
+    </delete>
+
+    <!-- 通过ProCategory的id将ProCategory的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateProCategoryById" parameterType="com.eu.fort.entity.ProCategory">
+        update pro_category set
+            cat_name=#{catName}
+            ,cat_brand=#{catBrand}
+            ,cat_effect=#{catEffect}
+        where cat_id=#{catId}
+    </update>
+
+    <!-- 通过ProCategory的id将ProCategory中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyProCategoryById" parameterType="com.eu.fort.entity.ProCategory">
+        update pro_category
+        <set>
+            <if test="catName != null">
+                cat_name=#{catName},
+            </if>
+            <if test="catBrand != null">
+                cat_brand=#{catBrand},
+            </if>
+            <if test="catEffect != null">
+                cat_effect=#{catEffect},
+            </if>
+        </set>
+        where cat_id=#{catId}
+    </update>
+
+</mapper>
