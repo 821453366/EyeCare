@@ -1,165 +1,365 @@
-/**
- * @Author: Larry  2017-04-16 17:20:56
- *+----------------------------------------------------------------------
- *| LarryBlogCMS [ LarryCMS网站内容管理系统 ]
- *| Copyright (c) 2016-2017 http://www.larrycms.com All rights reserved.
- *| Version 1.09
- *| <313492783@qq.com>
- *+----------------------------------------------------------------------
- */
-html,body{
-	height: 100%;
-	overflow: hidden;
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
-.larry-canvas{
-	background: #00917D;
-	width: 100%;
-	height: 100%;
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
 }
-.layui-canvas{
-	display: block;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: -1;
+
+.clearfix:after {
+    clear: both;
 }
-.layui-layout-login{
-	position: fixed;
-	top: 0px;
-	left: 50%;
-    width:350px;
-    height:auto;
-    overflow:hidden;
-    margin:10% auto 0 auto;
-    margin-left: -225px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 40px;
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 12px;
+    margin: 0;
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.25;
+    font-family: 'Raleway', Calibri, Arial, sans-serif;
+}
+
+.large-header {
+    position: relative;
+    width: 100%;
+    background: #333;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+
+.demo-1 .large-header {
+    background-image: url('../img/bg.jpg');
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #f00;
+}
+
+.cl {
+    clear: both;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+.login {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 35%;
+    top: 21%;
+    border: 0;
+    padding: 5px 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3);
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3);
+}
+
+.logo {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 35%;
+    top: 20%;
+    border: 0;
+    padding: 5px 0;
+    margin: 0 auto;
+}
+
+.header {
+    height: 50px;
+    border-bottom: 1px solid #e2e2e2;
+    position: relative;
+    font-family: "Microsoft Yahei";
+}
+
+.header .switch {
+    height: 45px;
+    position: absolute;
+    left: 60px;
+    bottom: 0;
+    font-size: 16px;
+}
+
+.header .switch #switch_qlogin {
+    margin-right: 85px;
+}
+
+.header .switch .switch_btn {
+    color: #959CA8;
+    display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    outline: none;
+    *hide-focus: expression(this.hideFocus=true);
+}
+
+.header .switch .switch_btn_focus {
+    color: #fff;
+    display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    outline: none;
+    *hide-focus: expression(this.hideFocus=true);
+}
+
+.header .switch .switch_btn:hover {
+    color: #CCDDFF;
+    text-decoration: none;
+}
+
+.header .switch .switch_btn_focus:hover {
+    text-decoration: none;
+}
+
+#switch_bottom {
+    position: absolute;
+    bottom: -1px;
+    _bottom: -2px;
+    border-bottom: 2px solid #848484;
+}
+
+.web_login {
+    width: 370px;
+    position: relative;
+}
+
+#web_login {
+    _left: 60px;
+    *left: 0;
+}
+
+.web_login .login_form {
+    width: 272px;
+    margin: 0 auto;
+}
+
+.web_login .reg_form {
+    width: 310px;
+    margin: 0 auto;
+}
+
+.web_login .input-tips {
+    float: left;
+    margin-top: 10px;
+    width: 50px;
+    height: 42px;
+    font-size: 16px;
+    line-height: 42px;
+    font-family: "Hiragino Sans GB", "Microsoft Yahei";
+}
+
+.web_login .input-tips2 {
+    float: left;
+    text-align: right;
+    padding-right: 3px;
+    width: 85px;
+    height: 30px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: -10px;
+    clear: both;
+    line-height: 30px;
+    font-family: "Hiragino Sans GB", "Microsoft Yahei";
+}
+
+.web_login .inputOuter {
+    width: 200px;
+    height: 42px;
+    margin-top: 10px;
+    float: left;
+}
+
+.web_login .inputOuter2 {
+    width: 200px;
+    margin-top: 6px;
+    margin-top: 5px \9;
+    float: left;
+}
+
+.web_login .inputstyle {
+    width: 200px;
+    height: 38px;
+    padding-left: 5px;
+    line-height: 30px;
+    line-height: 38px;
+    border: 1px solid #D7D7D7;
+    background: #fff;
+    color: #333;
+    border-radius: 2px;
+    font-family: Verdana, Tahoma, Arial;
+    font-size: 16px;
+    ime-mode: disabled;
+}
+
+.web_login input.inputstyle2:focus,
+.web_login input.inputstyle:focus {
+    border: 1px solid #198BD4;
+    box-shadow: 0 0 2px #198BD4;
+}
+
+.web_login .inputstyle2 {
+    width: 200px;
+    height: 34px;
+    padding-left: 5px;
+    line-height: 34px;
+    border: 1px solid #D7D7D7;
+    background: #fff;
+    color: #333;
+    border-radius: 2px;
+    font-family: Verdana, Tahoma, Arial;
+    font-size: 16px;
+    ime-mode: disabled;
+}
+
+.web_login .uinArea {
+    height: 55px;
+    position: relative;
+    z-index: 10;
+}
+
+.web_login .pwdArea {
+    height: 55px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 3;
+}
+
+.web_qr_login {
+    position: relative;
+    overflow: hidden;
+}
+
+.cue {
+    height: 35px;
+    width: 200px;
+    line-height: 35px;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-left: 55px;
+    text-align: center;
+    color: #CCDDFF;
+    font-family: "Hiragino Sans GB", "Microsoft Yahei";
+}
+
+h1 {
+    margin: 0px auto;
+    text-align: center;
+    color: #fff;
+    margin-left: -38px;
+    font-size: 38px;
+    font-weight: bold;
+    text-shadow: 0px 1px 1px #555;
+}
+
+h1 sup {
+    font-size: 18px;
+    font-style: normal;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.web_login {
     padding-bottom: 20px;
-	background: #e8e8e8;
-    box-shadow:0 -15px 30px gray;
-    border-radius:5px;
 }
-.layui-layout-login h1{
-	font-size:25px;
-	font-weight:bold;
-	text-align:center;
-	color:gray;
-	text-shadow:0 0 1px gray;
-	margin-bottom:15px;
+
+.jianyi {
+    text-align: center;
+    margin-top: 27px;
+    color: #B3B8C4;
 }
-.layui-layout-login h1 strong{
-	display:block;
+
+.reg_form li {
+    height: 55px;
 }
-.layui-layout-login h1 em{
-	display:block;
-	font-size:16px;
-	margin-top:8px;
+
+.web_login input.inputstyle2:focus,
+.web_login input.inputstyle:focus {
+    border: 1px solid #5796f;
+    box-shadow: 0 0 0;
 }
-.layui-layout-login .larry-login{
-	margin:10px 0;
-	height:42px;
-	overflow:hidden;
-	position:relative;
+
+.web_login .inputstyle2 {
+    border-radius: 2px;
+    width: 210px;
 }
-.larry-login .login_txtbx{
-	font-size:14px;
-	line-height:26px;
-	padding:8px 5%;
-	width:90%;
-	text-indent:2em;
-	border:none;
-	background:#5cbdaa;
-	color:white;
+
+.button_blue {
+    display: inline-block;
+    float: left;
+    height: 41px;
+    border-radius: 4px;
+    background: #2795dc;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid #0078b3;
+    *border-bottom: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 10px;
+    *width: 140px;
+    text-align: center;
+    outline: none;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
 }
-.larry-login  .login_txtbx::-webkit-input-placeholder {
-	color:#f4f4f4;
-	line-height:inherit;
-} 
-.larry-login  .login_txtbx:-moz-placeholder {
-	color:#f4f4f4;
-	line-height:inherit;
-} 
-.larry-login  .login_txtbx::-moz-placeholder {
-	color:#f4f4f4;
-	line-height:inherit;
+
+input.button_blue:hover {
+    background: #0081c1;
+    border-bottom: 3px solid #006698;
+    *border-bottom: none;
+    color: #fff;
+    text-decoration: none;
 }
-.larry-login  .login_txtbx:focus{
-	background:#55b7a4;
+
+a.zcxy {
+    text-decoration: underline;
+    line-height: 58px;
+    margin-left: 15px;
+    color: #959ca8;
 }
-.larry-login:before{
-	font-family:'adminthemesregular';
-	position:absolute;
-	top:0;
-	left:10px;
-	height:42px;
-	line-height:42px;
-	font-size:20px;
-	color:#0c9076;
+
+.web_login .login_form {
+    margin-top: 30px;
 }
-.layui-user-icon:before{content:"u";}
-.layui-pwd-icon:before{content:"p";}
-.layui-val-icon:before{content:"n";}
-.layui-code-box{
-	width:100%;
-	height: 42px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	background:#5cbdaa;
-	font-size:14px;
-	height:26px;
-	line-height:26px;
+
+.web_login .uinArea {
+    height: 60px;
 }
-.layui-code-box input.login_txtbx{
-	width:45%;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	float: left;
-	color:white;
-	outline:none;
-	border:none;
-}
-.layui-code-box input.login_txtbx:focus{
-	font-size: 20px;
-}
-.layui-code-box  .verifyImg{
-	display: block;
-	width: 43%;
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	cursor: pointer;
-}
-.layui-submit .submit_btn{
-	width:100%;
-	height:42px;
-	border:none;
-	font-size:16px;
-	background:#FF5722;
-	color:#f8f8f8;
-	cursor: pointer;
-}
-.submit_btn:hover{
-	background:#009688;
-	color:#f4f4f4;
-}
-.layui-login-text{
-	margin:10px 0;
-	height:60px;
-	overflow:hidden;
-	position:relative;
-}
-.layui-login-text p{
-	color:gray;
-	font-size:14px;
-	text-align:center;
-	margin:5px 0;
-}
-.layui-login-text a{
-	color:#53c6b0;
-	font-size:14px;
-}
-.layui-login-text a:hover{
-	text-decoration: underline;
+
+.header .switch {
+    left: 70px;
 }
