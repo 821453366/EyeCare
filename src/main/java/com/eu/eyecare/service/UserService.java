@@ -1,6 +1,6 @@
 package com.eu.eyecare.service;
 
-import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
 import com.eu.eyecare.utils.PageUtil;
 import java.util.List;
 import java.util.Map;
@@ -11,13 +11,13 @@ public interface UserService {
      * @param
      * @return
      */
-    List<Map<String,String>>  insertUser(PageUtil pageUtil,String adminRealname) throws Exception;
+    List<Map<String,String>>  insertUser(PageUtil pageUtil,String empName) throws Exception;
 
     /**
      * 插入管理员
-     * @param admin
+     * @param eyeEmp
      */
-    void addUser(Admin admin) throws Exception;
+    void addUser(EyeEmp eyeEmp) throws Exception;
 
     /**
      * 通过ID删除用户
@@ -27,21 +27,21 @@ public interface UserService {
 
     /**
      * 通过ID查询用户信息
-     * @param id
+     * @param empId
      * @return
      */
-    List<Admin> findById(int id) throws Exception;
+    List<EyeEmp> findById(int empId) throws Exception;
     /**
      * 查找用户信息
      * @param username
      * @return
      */
-    Admin queryUserInfo(String username);
+    EyeEmp queryUserInfo(String username);
 
     /**
      * 更新用户信息
-     * @param admin
+     * @param eyeEmp
      */
-    void updateUserInfo(Admin admin);
+    void updateUserInfo(EyeEmp eyeEmp);
 
 }

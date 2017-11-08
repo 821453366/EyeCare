@@ -1,7 +1,7 @@
 package com.eu.eyecare.service.impl;
 
 import com.eu.eyecare.dao.UserDao;
-import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
 import com.eu.eyecare.service.UserService;
 import com.eu.eyecare.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,39 +21,39 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<Map<String, String>> insertUser(PageUtil page,String adminRealname) throws Exception {
-        String adminReal="%"+adminRealname+"%";
+    public List<Map<String, String>> insertUser(PageUtil page,String eyeName) throws Exception {
+        String eyeEmpReal="%"+eyeName+"%";
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
         data.put("end", page.getPageSize());
-        data.put("adminRealname",adminReal);
+        data.put("eyeName",eyeEmpReal);
         page.setTotalSize(userDao.queryUserCount());
 
         return userDao.queryUser(data);
     }
 
     @Override
-    public void addUser(Admin admin) throws Exception{
+    public void addUser(EyeEmp eyeEmp) throws Exception{
 
         Date now = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");//可以方便地修改日期格式
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
         String date = dateFormat.format( now );
-        admin.setAdminDate(date);
+        eyeEmp.setEmpTime(date);
 
-        userDao.addUser(admin);
+        userDao.addUser(eyeEmp);
 
     }
     @Override
-    public void deleteUser(String id) throws Exception{
-        userDao.deleteUser(id);
+    public void deleteUser(String empId) throws Exception{
+        userDao.deleteUser(empId);
     }
     @Override
-    public List<Admin> findById(int id)throws Exception {
-        return userDao.findById(id);
+    public List<EyeEmp> findById(int empId)throws Exception {
+        return userDao.findById(empId);
     }
 
     @Override
-    public Admin queryUserInfo(String username) {
+    public EyeEmp queryUserInfo(String username) {
         try {
             return userDao.queryUserInfo(username);
         } catch (Exception e) {
@@ -62,9 +62,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserInfo(Admin admin) {
+    public void updateUserInfo(EyeEmp eyeEmp) {
         try {
-            userDao.updateUserInfo(admin);
+            userDao.updateUserInfo(eyeEmp);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

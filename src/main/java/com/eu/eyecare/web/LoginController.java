@@ -1,6 +1,6 @@
 package com.eu.eyecare.web;
 
-import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
 import com.eu.eyecare.service.LoginService;
 import com.eu.eyecare.service.UserService;
 import com.eu.eyecare.utils.Constant;
@@ -28,10 +28,10 @@ public class LoginController extends HttpServlet {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Map<String, Object> login(HttpSession session, Admin admin) {
+    public Map<String, Object> login(HttpSession session, EyeEmp eyeEmp) {
         Map<String, Object> data = new HashMap<String, Object>();
 
-        Admin userInfo = loginService.login(admin);
+        EyeEmp userInfo = loginService.login(eyeEmp);
         if (userInfo != null) {
 
             session.setAttribute("user", userInfo);
@@ -50,7 +50,7 @@ public class LoginController extends HttpServlet {
         Map<String, Object> result = new HashMap<String, Object>();
         Boolean haveSession=true;
         try {
-            Admin user = (Admin) session.getAttribute("user");
+            EyeEmp user = (EyeEmp) session.getAttribute("user");
             if(user == null){
                 haveSession = false;
             }
@@ -81,10 +81,10 @@ public class LoginController extends HttpServlet {
     @ResponseBody
     public Map<String, Object> findById(HttpSession session) {
         Map<String, Object> result = new HashMap<String, Object>();
-        int id = ((Admin)session.getAttribute("user")).getId();
+        int empId = ((EyeEmp)session.getAttribute("user")).getEmpId();
 
         try {
-            result.put("user", userService.findById(id));
+            result.put("user", userService.findById(empId));
             result.put("msg", Constant.SEARCH_SUCCESS);
             result.put("result", true);
         } catch (Exception e) {

@@ -1,6 +1,6 @@
 package com.eu.eyecare.dao;
 
-import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
 
 import java.util.List;
 import java.util.Map;
@@ -16,32 +16,32 @@ public interface UserDao {
     /**
      * 插入管理员
      *
-     * @param admin
+     * @param eyeEmp
      */
-    void addUser(Admin admin) throws Exception;
+    void addUser(EyeEmp eyeEmp) throws Exception;
 
     /**
      * 通过ID删除用户
-     * @param id
+     * @param empId
      */
-    void deleteUser(String id) throws Exception;
+    void deleteUser(String empId) throws Exception;
 
     /**
      * 通过ID查询用户信息
-     * @param id
+     * @param empId
      * @return
      */
-    List<Admin> findById(int id) throws Exception;
+    List<EyeEmp> findById(int empId) throws Exception;
 
     /**
      * 查找用户信息
      * @param username
      * @return
      */
-    Admin queryUserInfo(String username);
+    EyeEmp queryUserInfo(String username);
     /**
      * 更新用户信息
-     * @param admin
+     * @param eyeEmp
      */
-    void updateUserInfo(Admin admin);
+    void updateUserInfo(EyeEmp eyeEmp);
 }

@@ -1,14 +1,14 @@
 package com.eu.eyecare.dao;
 
-import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
 
 public interface LoginDao {
     /**
      * 登录
-     * @param admin
+     * @param eyeEmp
      * @return
      */
-   Admin login(Admin admin);
+    EyeEmp login(EyeEmp eyeEmp);
 
 
 

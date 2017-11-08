@@ -1,7 +1,8 @@
 package com.eu.eyecare.web.user;
 
 import com.eu.eyecare.dto.Result;
-import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
+import com.eu.eyecare.entity.EyeEmp;
 import com.eu.eyecare.service.UserService;
 import com.eu.eyecare.utils.Constant;
 import com.eu.eyecare.utils.PageUtil;
@@ -41,7 +42,7 @@ public class UserController {
 
     @RequestMapping("/addUser")
     @ResponseBody
-    public Result addUser(Admin admin) {
+    public Result addUser(EyeEmp admin) {
         try {
             userService.addUser(admin);
             return Result.success(null, Constant.ADD_SUCCESS);
@@ -85,7 +86,7 @@ public class UserController {
     //用户信息
     @RequestMapping("/updateInfoAjax")
     @ResponseBody
-    public Map<String, Object> updateInfoAjax(Admin admin) {
+    public Map<String, Object> updateInfoAjax(EyeEmp admin) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
             userService.updateUserInfo(admin);

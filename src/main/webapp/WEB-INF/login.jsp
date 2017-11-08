@@ -34,27 +34,27 @@
                     <div class="web_login" id="web_login">
                         <div class="login-box">
                             <div class="login_form">
-                                <form action="" name="loginform" accept-charset="utf-8" id="login_form"
+                                <form  name="loginform" accept-charset="utf-8" id="login_form"
                                       class="loginForm" method="post">
-                                    <input type="hidden" id="userName" name="did" value="0"/>
-                                    <input type="hidden" id="password" name="to" value="log"/>
+                                    <input type="hidden"  />
+                                    <input type="hidden"  />
                                     <div class="uinArea" id="uinArea">
-                                        <label class="input-tips" for="u">帐号：</label>
+                                        <label class="input-tips" for="empName">帐号：</label>
                                         <div class="inputOuter" id="uArea">
 
-                                            <input type="text" id="u" name="username" class="inputstyle"/>
+                                            <input type="text" id="empName" name="adminName" class="inputstyle"/>
                                         </div>
                                     </div>
                                     <div class="pwdArea" id="pwdArea">
-                                        <label class="input-tips" for="p">密码：</label>
+                                        <label class="input-tips" for="empPassword">密码：</label>
                                         <div class="inputOuter" id="pArea">
 
-                                            <input type="password" id="p" name="p" class="inputstyle"/>
+                                            <input type="password" id="empPassword" name="adminPassword" class="inputstyle"/>
                                         </div>
                                     </div>
 
                                     <div style="padding-left:50px;margin-top:20px;">
-                                        <input type="submit" value="登 录" style="width:150px;"  onclick="login()" class="button_blue"/></div>
+                                        <input type="button" value="登 录" style="width:150px;"  onclick="login()" class="button_blue"/></div>
                                 </form>
                             </div>
                         </div>
@@ -118,24 +118,23 @@
 </div>
 <script>
     function login() {
-        let adminName = $("#userName").val();
-        let adminPassword = $("#password").val();
+        let empName = $("#empName").val();
+        let empPassword = $("#empPassword").val();
         $.ajax({
             url: "${baseurl}/login",
-            data: {adminName: adminName, adminPassword: adminPassword},
+            data: {empName: empName, empPassword: empPassword},
             success: function (data) {
                 if (data.result) {
                     location.href = "${baseurl}/index";
                 } else {
                     layui.use('layer', function () {
                         var layer = layui.layer;
-                        layer.msg('登录失败:用户名或密码错误', {icon: 5, time: 2000});
+                        layer.msg('用户名或密码错误', {icon: 5, time: 2000});
                     });
                 }
             }
         });
     }
-
 </script>
 </body>
 </html>

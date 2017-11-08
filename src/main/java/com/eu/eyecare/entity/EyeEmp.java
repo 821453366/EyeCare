@@ -2,16 +2,35 @@ package com.eu.eyecare.entity;
 public class EyeEmp {
     private Integer empId;
     private String empName;
+    private String empPassword;
     private String empPhone;
     private String empState;
     private String empImg;
     private String empSex;
-    private java.util.Date empTime;
+    private String empTime;
     private String empDesc;
+    private int empRank;
+
+    public int getEmpRank() {
+        return empRank;
+    }
+
+    public void setEmpRank(int empRank) {
+        this.empRank = empRank;
+    }
+
+    public String getEmpPassword() {
+        return empPassword;
+    }
+
+    public void setEmpPassword(String empPassword) {
+        this.empPassword = empPassword;
+    }
+
     public EyeEmp() {
         super();
     }
-    public EyeEmp(Integer empId,String empName,String empPhone,String empState,String empImg,String empSex,java.util.Date empTime,String empDesc) {
+    public EyeEmp(Integer empId,String empName,String empPhone,String empState,String empImg,String empSex,String empTime,String empDesc) {
         super();
         this.empId = empId;
         this.empName = empName;
@@ -70,11 +89,11 @@ public class EyeEmp {
         this.empSex = empSex;
     }
 
-    public java.util.Date getEmpTime() {
+    public String getEmpTime() {
         return this.empTime;
     }
 
-    public void setEmpTime(java.util.Date empTime) {
+    public void setEmpTime(String empTime) {
         this.empTime = empTime;
     }
 

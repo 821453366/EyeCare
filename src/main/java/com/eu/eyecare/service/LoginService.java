@@ -1,14 +1,15 @@
 package com.eu.eyecare.service;
 
 import com.eu.eyecare.entity.Admin;
+import com.eu.eyecare.entity.EyeEmp;
 
 public interface LoginService {
     /**
      * 登录页面验证
-     * @param admin
+     * @param eyeEmp
      * @return
      */
-    Admin login(Admin admin);
+    EyeEmp login(EyeEmp eyeEmp);
 
 
 

@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Recover" />
+          <element id="module-output" name="EyeCare" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />
@@ -49,7 +49,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/Recover/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Recover/web/Web" />
+      <element id="javaee-facet-resources" facet="EyeCare/web/Web" />
     </root>
   </artifact>
 </component>

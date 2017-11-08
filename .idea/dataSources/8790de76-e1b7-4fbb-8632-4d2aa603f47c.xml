@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="EyeCare@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="EyeCare">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="db_recover"/>
+    <schema id="4" parent="1" name="eudsstest"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="login"/>
+    <schema id="7" parent="1" name="mybatis"/>
+    <schema id="8" parent="1" name="mysql"/>
+    <schema id="9" parent="1" name="performance_schema"/>
+    <schema id="10" parent="1" name="sams"/>
+    <schema id="11" parent="1" name="shiro"/>
+    <schema id="12" parent="1" name="ssm"/>
+    <schema id="13" parent="1" name="stuinfo"/>
+    <schema id="14" parent="1" name="stuInfo"/>
+    <schema id="15" parent="1" name="sys"/>
+    <schema id="16" parent="1" name="test"/>
+    <table id="17" parent="2" name="eye_emp"/>
+    <table id="18" parent="2" name="eye_product"/>
+    <table id="19" parent="2" name="eye_user"/>
+    <table id="20" parent="2" name="order_details"/>
+    <table id="21" parent="2" name="order_info"/>
+    <table id="22" parent="2" name="pro_category"/>
+    <table id="23" parent="2" name="pro_img">
+      <Comment>��ƷͼƬ��</Comment>
+    </table>
+    <table id="24" parent="2" name="pro_pushinfo"/>
+    <table id="25" parent="2" name="revisit"/>
+    <column id="26" parent="17" name="emp_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="17" name="emp_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="28" parent="17" name="emp_phone">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="29" parent="17" name="emp_state">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="30" parent="17" name="emp_img">
+      <Position>6</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="31" parent="17" name="emp_sex">
+      <Position>7</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="32" parent="17" name="emp_time">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="33" parent="17" name="emp_desc">
+      <Position>9</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="34" parent="17" name="emp_password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="35" parent="17" name="emp_rank">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="36" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>emp_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="18" name="pro_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="18" name="pro_oprice">
+      <Position>2</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="39" parent="18" name="pro_nprice">
+      <Position>3</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="40" parent="18" name="pro_amount">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="18" name="category_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="42" parent="18" name="pro_state">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="43" parent="18" name="pro_type">
+      <Position>7</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="44" parent="18" name="pro_img">
+      <Position>8</Position>
+      <DataType>varchar(400)|0</DataType>
+    </column>
+    <key id="45" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pro_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="19" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="19" name="username">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="48" parent="19" name="password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="49" parent="19" name="sex">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="50" parent="19" name="age">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="51" parent="19" name="birthday">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="52" parent="19" name="phone">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="53" parent="19" name="email">
+      <Position>8</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="54" parent="19" name="address">
+      <Position>9</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="55" parent="19" name="description">
+      <Position>10</Position>
+      <DataType>varchar(300)|0</DataType>
+    </column>
+    <key id="56" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="20" name="odetails_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="58" parent="20" name="order_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="20" name="pro_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="20" name="odetails_amount">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="61" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>odetails_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="21" name="order_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="21" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="64" parent="21" name="create_time">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="65" parent="21" name="finish_time">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="66" parent="21" name="order_state">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="67" parent="21" name="order_totalprice">
+      <Position>6</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="68" parent="21" name="order_nprice">
+      <Position>7</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="69" parent="21" name="pay_way">
+      <Position>8</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="70" parent="21" name="fact_pay">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="71" parent="21" name="paytime">
+      <Position>10</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="72" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>order_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="22" name="cat_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="22" name="cat_name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="75" parent="22" name="cat_brand">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="76" parent="22" name="cat_effect">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="77" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cat_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="78" parent="23" name="img_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="79" parent="23" name="img_url">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="80" parent="23" name="pro_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="81" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>img_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="82" parent="24" name="push_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="83" parent="24" name="push_name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="84" parent="24" name="push_oprice">
+      <Position>3</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="85" parent="24" name="push_nprice">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="86" parent="24" name="push_desc">
+      <Position>5</Position>
+      <DataType>varchar(250)|0</DataType>
+    </column>
+    <column id="87" parent="24" name="push_img">
+      <Position>6</Position>
+      <DataType>varchar(300)|0</DataType>
+    </column>
+    <column id="88" parent="24" name="push_state">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <key id="89" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>push_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="90" parent="25" name="re_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="91" parent="25" name="emp_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="92" parent="25" name="order_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="93" parent="25" name="re_count">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="94" parent="25" name="re_info">
+      <Position>5</Position>
+      <DataType>varchar(300)|0</DataType>
+    </column>
+    <column id="95" parent="25" name="re_time">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="96" parent="25" name="order_desc">
+      <Position>7</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+  </database-model>
+</dataSource>

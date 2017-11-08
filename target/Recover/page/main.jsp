@@ -19,107 +19,28 @@
 		<div class="admin-main">
 
 			<fieldset class="layui-elem-field">
-				<legend><b>隆兴公司废钢回收账目管理系统</b></legend>
+				<legend><b>腾龙太阳光眼睛护理简介</b></legend>
 				<div class="layui-field-box">
 
 
 
 					<div style="margin: 15px;">
 						<fieldset class="layui-elem-field site-demo-button">
-							<legend>隆兴公司废钢回收曲线统计图</legend>
-
-							<div class="main_his">
-								<div id="main_Histogram" ></div>
-								<script type="text/javascript">
-                                    var dateOne = new Array(10);
-                                    var dateTwo = new Array(10);
-                                    let yearOne = "";
-                                    let yearTwo = "";
-                                    let subtext = "";
-                                    $.post("${pageContext.request.contextPath}/MainController/findMainController", function (data) {
-                                        let valueOne = data.recovery;
-                                        let valueTwo = data.sale;
-                                       for(let i = 0; i<10;i++){
-                                           dateOne[i] = parseInt(valueOne[i].recovery_capacity) * parseInt(valueOne[i].recovery_pirce);
-                                           dateTwo[i] = parseInt(valueTwo[i].sale_capacity) * parseInt(valueTwo[i].sale_pirce);
-									   }
-                                        // 树状图
-                                        var myChart = echarts.init(document.getElementById("main_Histogram"));
-
-                                        var option = {
-                                            title: {
-                                                text: '近十次回收与销售额统计（单位：元）'
-                                            },
-                                            tooltip: {
-                                                trigger: 'axis'
-                                            },
-                                            color: ["#FF0000", "#00BFFF", "#FF00FF", "#1ce322", "#000000", '#EE7942'],
-                                            legend: {
-                                                data: ['废钢回收额', '废钢销售额']
-                                            },
-                                            grid: {
-                                                left: '3%',
-                                                right: '4%',
-                                                bottom: '3%',
-                                                containLabel: true
-                                            },
-                                            toolbox: {
-                                                feature: {
-                                                    saveAsImage: {}
-                                                }
-                                            },
-                                            xAxis: {
-                                                type: 'category',
-                                                boundaryGap: false,
-                                                data: ['最新一次', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-                                            },
-                                            yAxis: [{
-                                                type: 'value',
-                                                axisLabel: {
-                                                    formatter: '{value} '
-                                                }
-                                            }],
-
-                                            series: [{
-                                                name: '废钢回收额',
-                                                type: 'line',
-                                                label: {
-                                                    normal: {
-                                                        show: true,
-                                                        position: 'top'
-                                                    }
-                                                },
-                                                lineStyle: {
-                                                    normal: {
-                                                        width: 2,
-                                                    }
-                                                },
-                                                data: dateOne
-                                            }, {
-                                                name: '废钢销售额',
-                                                type: 'line',
-                                                label: {
-                                                    normal: {
-                                                        show: true,
-                                                        position: 'top'
-                                                    }
-                                                },
-                                                lineStyle: {
-                                                    normal: {
-                                                        width: 2,
-                                                    }
-                                                },
-                                                data: dateTwo
-                                            }]
-                                        };
-
-                                        // 使用刚指定的配置项和数据显示图表。
-                                        myChart.setOption(option);
-                                    });
-								</script>
-
-							</div>
-
+							<legend>腾龙太阳光眼睛护理</legend>
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
+							[待完善]我们公司房间看风景啊所解放了撒娇了房间链接撒了就发觉所地方就撒娇发看了所决定了房间酸辣的解放了司机
 						</fieldset>
 
 					</div>

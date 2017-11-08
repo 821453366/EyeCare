@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Recover.iml" filepath="$PROJECT_DIR$/Recover.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EyeCare.iml" filepath="$PROJECT_DIR$/EyeCare.iml" />
     </modules>
   </component>
 </project>
