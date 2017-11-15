@@ -23,7 +23,7 @@ public interface UserService {
      * 通过ID删除用户
      * @param id
      */
-    void deleteUser(String id) throws Exception;
+    void deleteUser(int id) throws Exception;
 
     /**
      * 通过ID查询用户信息

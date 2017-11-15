@@ -92,18 +92,6 @@
         });
 
     }
-    //图片上传
-    layui.use('upload', function () {
-        layui.upload({
-            url: '${baseurl}/updateImage' //上传接口
-            , success: function (res) { //上传成功后的回调
-                if (res.result) {
-                    $("#imagesToUpdate").text("").attr("src", HEAD_IMAGE_PREFIX + res.data);
-                    imgName = res.data;
-                }
-            }
-        });
-    });
 </script>
 <body>
 <div class="layui-layout layui-layout-admin" style="border-bottom: solid 1px #1aa094;">

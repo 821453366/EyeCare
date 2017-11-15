@@ -23,12 +23,12 @@ public class UserController {
 
     @RequestMapping("/findUser")
     @ResponseBody
-    public Map<String, Object> insertProfession(PageUtil page,String adminRealname){
+    public Map<String, Object> insertProfession(PageUtil page,String empName){
         Map<String, Object> data = new HashMap<String, Object>();
-        List<Map<String,String>> TronClass;
+        List<Map<String,String>> emp;
         try {
-            TronClass = userService.insertUser(page,adminRealname);
-            data.put("user", TronClass);
+            emp = userService.insertUser(page,empName);
+            data.put("user", emp);
             data.put("page", page);
             data.put("result", true);
             data.put("msg", Constant.SEARCH_SUCCESS);
@@ -42,9 +42,9 @@ public class UserController {
 
     @RequestMapping("/addUser")
     @ResponseBody
-    public Result addUser(EyeEmp admin) {
+    public Result addUser(EyeEmp eyeEmp) {
         try {
-            userService.addUser(admin);
+            userService.addUser(eyeEmp);
             return Result.success(null, Constant.ADD_SUCCESS);
         } catch (Exception e) {
             new RuntimeException(e);
@@ -55,7 +55,7 @@ public class UserController {
 
     @RequestMapping("/deleteUser")
     @ResponseBody
-    public Map<String, Object> deleteUser(String id) {
+    public Map<String, Object> deleteUser(int id) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
             userService.deleteUser(id);

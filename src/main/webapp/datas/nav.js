@@ -55,7 +55,12 @@ var navs = [{
         "href": "menu/reckonRecover"
     }]
 },{
-    "title": "用户信息",
+    "title": "客户信息",
+    "icon": "fa fa-bar-chart-o",
+    "href": "menu/user",
+    "spread": false
+},{
+    "title": "员工管理",
     "icon": "fa fa-bar-chart-o",
     "href": "menu/user",
     "spread": false

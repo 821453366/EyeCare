@@ -22,27 +22,13 @@
     }
 </style>
 <script type="text/javascript" src="${baseurl}/public/common/layui/layui.js"></script>
-<script type="text/javascript">
-    //图片上传
-    layui.use('upload', function () {
-        layui.upload({
-            url: '${pageContext.request.contextPath}/user/updateImage' //上传接口
-            , success: function (res) { //上传成功后的回调
-                alert(111)
-                if (res.result) {
-                    $("#imagesToUpdate").text("").attr("src", HEAD_IMAGE_PREFIX + res.data);
-                    imgName = res.data;
-                }
-            }
-        });
-    });
-</script>
+
 <body>
 <div class="admin-main">
     <blockquote class="layui-elem-quote">
         <div class="layui-inline">
             <div class="layui-input-inline">
-                <input type="text" name="title" id="adminRealname" lay-verify="title" autocomplete="off"
+                <input type="text" name="title" id="empName" lay-verify="title" autocomplete="off"
                        placeholder="用户姓名" class="layui-input">
             </div>
             <a class="layui-btn" onclick="cl.list()"><i class="layui-icon">&#xe615;</i>搜索</a>
@@ -60,11 +46,10 @@
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>姓名</th>
                     <th>用户ID</th>
                     <th>性别</th>
-                    <th>年龄</th>
                     <th>手机号</th>
+                    <th>状态</th>
                     <th>权限</th>
                     <th>创建时间</th>
                     <th>操作</th>
@@ -83,21 +68,20 @@
     {{# layui.each(d.user, function(index, item){ }}
     <tr>
         <td>{{ index+1}}</td>
-        <td>{{item.admin_realname  == undefined ? "暂无" : item.admin_realname}}</td>
-        <th>{{item.admin_name == undefined ? "暂无" : item.admin_name}}</th>
-        <th>{{item.admin_sex == undefined ? "暂无" : item.admin_sex}}</th>
-        <th>{{item.admin_age == undefined ? "暂无" : item.admin_age}}</th>
-        <th>{{item.admin_phone == undefined ? "暂无" : item.admin_phone}}</th>
-        <th>{{item.admin_rank == undefined ? "暂无" : (item.admin_rank == '1'?'管理员':'普通用户')}}</th>
-        <th>{{item.admin_date == undefined ? "暂无" : item.admin_date}}</th>
+        <th>{{item.emp_name == undefined ? "暂无" : item.emp_name}}</th>
+        <th>{{item.emp_sex == undefined ? "暂无" : item.emp_sex}}</th>
+        <th>{{item.emp_phone == undefined ? "暂无" : item.emp_phone}}</th>
+        <th>{{"可用"}}</th>
+        <th>{{item.emp_rank == undefined ? "暂无" : (item.emp_rank == '1'?'管理员':'普通员工')}}</th>
+        <th>{{item.emp_time == undefined ? "暂无" : item.emp_time}}</th>
         <td>
             <a class="layui-btn layui-btn-small layui-btn-normal  layui-icon "
-               onclick="cl.preview('{{item.id}}')">
+               onclick="cl.preview('{{item.emp_id}}')">
                 &#xe60a; 预览
             </a>
-            <button class='layui-btn layui-btn-small layui-icon' onclick="cl.updateInfo('{{item.id}}')">&#xe642;编辑</button>
+            <button class='layui-btn layui-btn-small layui-icon' onclick="cl.updateInfo('{{item.emp_id}}')">&#xe642;编辑</button>
             <button data-id='1' data-opt='del' class='layui-btn layui-btn-danger layui-btn-small layui-icon'
-                    onclick="cl.delete('{{item.id}}')">
+                    onclick="cl.delete('{{item.emp_id}}')">
                 &#xe640;删除
             </button>
         </td>
@@ -111,17 +95,9 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">用户姓名：</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="adminRealname" autocomplete="off" class="layui-input" placeholder="用户姓名">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
                 <label class="layui-form-label">用户ID：</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="adminName" autocomplete="off" class="layui-input" placeholder="登录账号">
+                    <input type="text" name="empName" autocomplete="off" class="layui-input" placeholder="登录账号">
                 </div>
             </div>
         </div>
@@ -129,7 +105,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">密码：</label>
                 <div class="layui-input-inline">
-                    <input type="password" name="adminPassword" autocomplete="off" class="layui-input"
+                    <input type="password" name="empPassword" autocomplete="off" class="layui-input"
                            placeholder="登录密码">
                 </div>
             </div>
@@ -137,15 +113,15 @@
         <div class="layui-form-item">
             <label class="layui-form-label">性别：</label>
             <div class="layui-input-block">
-                <input type="radio" name="adminSex" value="男" title="男" checked>
-                <input type="radio" name="adminSex" value="女" title="女">
+                <input type="radio" name="empSex" value="男" title="男" checked>
+                <input type="radio" name="empSex" value="女" title="女">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">权限：</label>
             <div class="layui-input-block">
-                <input type="radio" name="adminRank" value="1" title="管理员" checked>
-                <input type="radio" name="adminRank" value="2" title="普通用户">
+                <input type="radio" name="empRank" value="1" title="管理员" checked>
+                <input type="radio" name="empRank" value="2" title="普通员工">
             </div>
         </div>
         <div class="layui-input-block">
@@ -225,7 +201,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">用户姓名:</label>
                 <div class="layui-input-inline">
-                    <input  type="text" id="adminRealnameUpdate" name = "adminRealname" lay-verify="required"
+                    <input  type="text" id="adminRealnameUpdate" name = "empName" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -308,13 +284,14 @@
                 });
             },
             list: function () {
-                let adminRealname = $("#adminRealname").val();
+                let empName = $("#empName").val();
                 $.post("${pageContext.request.contextPath}/user/findUser", {
                         currentIndex: currentIndex,
                         pageSize: pageSize,
-                        adminRealname:adminRealname
+                        empName:empName
                     },
                     function (data) {
+                    console.log(data)
                         if (data.result) {
                             currentIndex = data.page.currentIndex;
                             totalSize = data.page.totalSize;
@@ -390,8 +367,8 @@
                 });
             },
             addUserAjax: function () {
-                let admin = $("#update-form").serialize();
-                $.post("${pageContext.request.contextPath}/user/addUser", admin, function (data) {
+                let eyeEmp = $("#update-form").serialize();
+                $.post("${pageContext.request.contextPath}/user/addUser", eyeEmp, function (data) {
                     layer.msg(data.msg, {time: 500});
                     if (data.result) {
                         setTimeout("location.reload()", 1000);

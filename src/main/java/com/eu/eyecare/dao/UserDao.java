@@ -11,7 +11,7 @@ public interface UserDao {
      */
     List<Map<String, String>> queryUser(Map<String, Object> data) throws Exception;
 
-    Long queryUserCount() throws Exception;
+    Long queryUserCount(String eyeEmpReal) throws Exception;
 
     /**
      * 插入管理员
@@ -24,7 +24,7 @@ public interface UserDao {
      * 通过ID删除用户
      * @param empId
      */
-    void deleteUser(String empId) throws Exception;
+    void deleteUser(int empId) throws Exception;
 
     /**
      * 通过ID查询用户信息

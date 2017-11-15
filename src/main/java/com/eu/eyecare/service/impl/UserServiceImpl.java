@@ -19,15 +19,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-
     @Override
     public List<Map<String, String>> insertUser(PageUtil page,String eyeName) throws Exception {
         String eyeEmpReal="%"+eyeName+"%";
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
         data.put("end", page.getPageSize());
-        data.put("eyeName",eyeEmpReal);
-        page.setTotalSize(userDao.queryUserCount());
+        data.put("empName",eyeEmpReal);
+        page.setTotalSize(userDao.queryUserCount(eyeEmpReal));
 
         return userDao.queryUser(data);
     }
@@ -44,8 +43,8 @@ public class UserServiceImpl implements UserService {
 
     }
     @Override
-    public void deleteUser(String empId) throws Exception{
-        userDao.deleteUser(empId);
+    public void deleteUser(int id) throws Exception{
+        userDao.deleteUser(id);
     }
     @Override
     public List<EyeEmp> findById(int empId)throws Exception {
