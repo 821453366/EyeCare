@@ -86,10 +86,10 @@ public class UserController {
     //用户信息
     @RequestMapping("/updateInfoAjax")
     @ResponseBody
-    public Map<String, Object> updateInfoAjax(EyeEmp admin) {
+    public Map<String, Object> updateInfoAjax(EyeEmp eyeEmp) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            userService.updateUserInfo(admin);
+            userService.updateUserInfo(eyeEmp);
             result.put("msg", Constant.UPDATE_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();

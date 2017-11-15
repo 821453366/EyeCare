@@ -29,7 +29,7 @@
         <div class="layui-inline">
             <div class="layui-input-inline">
                 <input type="text" name="title" id="empName" lay-verify="title" autocomplete="off"
-                       placeholder="用户姓名" class="layui-input">
+                       placeholder="用户ID" class="layui-input">
             </div>
             <a class="layui-btn" onclick="cl.list()"><i class="layui-icon">&#xe615;</i>搜索</a>
 
@@ -139,13 +139,6 @@
         <form class="layui-form layui-form-pane" action="">
 
             <div class="layui-form-item">
-                <label class="layui-form-label">用户姓名:</label>
-                <div class="layui-input-inline">
-                    <input readonly="readonly" type="text" id="adminRealnamePreview" lay-verify="required"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label">用户ID：</label>
                 <div class="layui-input-inline">
                     <input readonly="readonly" type="text" id="adminNamePreview" lay-verify="required"
@@ -155,21 +148,21 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">性别：</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="adminSexPreview" lay-verify="required" placeholder="请输入" autocomplete="off"
-                           class="layui-input" readonly="readonly">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">年龄：</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="adminAgePreview" lay-verify="required" placeholder="请输入" autocomplete="off"
+                    <input type="text" id="adminSexPreview" lay-verify="required" placeholder="待完善" autocomplete="off"
                            class="layui-input" readonly="readonly">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">手机号：</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="adminPhonePreview" lay-verify="required" placeholder="请输入" autocomplete="off"
+                    <input type="text" id="adminPhonePreview" lay-verify="required" placeholder="待完善" autocomplete="off"
+                           class="layui-input" readonly="readonly">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="" lay-verify="required"value="可用" autocomplete="off"
                            class="layui-input" readonly="readonly">
                 </div>
             </div>
@@ -197,53 +190,40 @@
     </fieldset>
     <div style="padding-left: 25%;padding-top: 2%;">
         <form class="layui-form layui-form-pane" action="" id="updateUserInfo">
-
+            <input  type="text" id="empIdUpdate" name = "empId" lay-verify="required"
+                    autocomplete="off" class="layui-input" style="display: none">
             <div class="layui-form-item">
-                <label class="layui-form-label">用户姓名:</label>
+                <label class="layui-form-label">用户ID:</label>
                 <div class="layui-input-inline">
                     <input  type="text" id="adminRealnameUpdate" name = "empName" lay-verify="required"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">用户ID：</label>
-                <div class="layui-input-inline">
-                    <input readonly="readonly" type="text" name="adminName" id="adminNameUpdate" lay-verify="required"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">性别：</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="adminSex" value="男" title="男" checked>
-                    <input type="radio" name="adminSex" value="女" title="女">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">年龄：</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="adminAge" id ="adminAgeUpdate" lay-verify="required" placeholder="请输入" autocomplete="off"
-                           class="layui-input" >
+                           autocomplete="off" class="layui-input" readonly>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">手机号：</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="adminPhone" id ="adminPhoneUpdate"lay-verify="required" placeholder="请输入" autocomplete="off"
+                    <input type="text" name="empPhone" id ="adminPhoneUpdate"lay-verify="required" placeholder="待完善" autocomplete="off"
                            class="layui-input" >
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别：</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="empSex" value="男" title="男" checked>
+                    <input type="radio" name="empSex" value="女" title="女">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">权限：</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="adminRank" value="1" title="管理员" checked>
-                    <input type="radio" name="adminRank" value="2" title="普通用户">
+                    <input type="radio" name="empRank" value="1" title="管理员" checked>
+                    <input type="radio" name="empRank" value="2" title="普通用户">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">账号创建日期：</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="adminDate" id ="adminDateUpdate" lay-verify="required" placeholder="请输入" autocomplete="off"
+                    <input type="text" name="empTime" id ="adminDateUpdate" lay-verify="required" placeholder="请输入" autocomplete="off"
                            class="layui-input" readonly="readonly">
                 </div>
             </div>
@@ -291,7 +271,6 @@
                         empName:empName
                     },
                     function (data) {
-                    console.log(data)
                         if (data.result) {
                             currentIndex = data.page.currentIndex;
                             totalSize = data.page.totalSize;
@@ -310,13 +289,11 @@
                     {id:id},
                     function (data) {
                         let user = data.user[0];
-                        $("#adminNamePreview").val(user.adminName);
-                        $("#adminRealnamePreview").val(user.adminRealname);
-                        $("#adminAgePreview").val(user.adminAge);
-                        $("#adminSexPreview").val(user.adminSex);
-                        $("#adminPhonePreview").val(user.adminPhone);
-                        $("#adminRankPreview").val(user.adminRank == 1 ?"管理员":"普通用户");
-                        $("#adminDatePreview").val(user.adminDate);
+                        $("#adminNamePreview").val(user.empName);
+                        $("#adminSexPreview").val(user.empSex);
+                        $("#adminPhonePreview").val(user.empPhone);
+                        $("#adminRankPreview").val(user.empRank == 1 ?"管理员":"普通员工");
+                        $("#adminDatePreview").val(user.empTime);
                     }
                 )
                 layer.open({
@@ -332,12 +309,10 @@
             $.post("${pageContext.request.contextPath}/user/userInfo",{id:id},
                 function (data) {
                     let user = data.user[0];
-                    $("#adminRealnameUpdate").val(user.adminRealname);
-                    $("#adminNameUpdate").val(user.adminName);
-                    $("#adminSexUpdate").val(user.adminSex);
-                    $("#adminAgeUpdate").val(user.adminAge);
-                    $("#adminPhoneUpdate").val(user.adminPhone);
-                    $("#adminDateUpdate").val(user.adminDate);
+                    $("#empIdUpdate").val(user.empId);
+                    $("#adminRealnameUpdate").val(user.empName);
+                    $("#adminPhoneUpdate").val(user.empPhone);
+                    $("#adminDateUpdate").val(user.empTime);
                     layer.open({
                         type: 1,
                         title: "修改信息",
@@ -350,9 +325,9 @@
         },
             //用户信息
             updateInfoAjax: function () {
-                let admin = $("#updateUserInfo").serialize();
+                let eyeEmp = $("#updateUserInfo").serialize();
             $.post("${pageContext.request.contextPath}/user/updateInfoAjax",
-                    admin,
+                eyeEmp,
                 function (data) {
                     layer.msg(data.msg);
                 }

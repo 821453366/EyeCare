@@ -23,5 +23,10 @@
     <select id="findById" parameterType="int" resultType="EyeEmp">
         SELECT * from eye_emp where emp_id=#{empId}
     </select>
-
+    <update id="updateUserInfo" parameterType="EyeEmp">
+        UPDATE eye_emp
+        SET emp_name = #{empName},emp_phone=#{empPhone},
+        emp_sex=#{empSex},emp_rank=#{empRank},emp_time=#{empTime}
+        WHERE emp_id = #{empId}
+    </update>
 </mapper>
