@@ -1,57 +1,46 @@
 package com.eu.eyecare.service;
 import java.util.List;
+import java.util.Map;
+
 import com.eu.eyecare.entity.EyeProduct;
+import com.eu.eyecare.utils.PageUtil;
+
 public interface EyeProductService{
 	/**
-	 * 获得EyeProduct数据的总行数
+	 * 用户信息
+	 * @param
 	 * @return
 	 */
-    long getEyeProductRowCount();
+	List<Map<String,String>>  insertUser(PageUtil pageUtil, String proName) throws Exception;
+
 	/**
-	 * 获得EyeProduct数据集合
-	 * @return
+	 * 插入管理员
+	 * @param eyeProduct
 	 */
-    List<EyeProduct> selectEyeProduct();
+	void addUser(EyeProduct eyeProduct) throws Exception;
+
 	/**
-	 * 获得一个EyeProduct对象,以参数EyeProduct对象中不为空的属性作为条件进行查询
-	 * @param obj
-	 * @return
-	 */
-    EyeProduct selectEyeProductByObj(EyeProduct obj);
-	/**
-	 * 通过EyeProduct的id获得EyeProduct对象
+	 * 通过ID删除用户
 	 * @param id
-	 * @return
 	 */
-    EyeProduct selectEyeProductById(Integer id);
+	void deleteUser(int id) throws Exception;
+
 	/**
-	 * 插入EyeProduct到数据库,包括null值
-	 * @param value
+	 * 通过ID查询用户信息
+	 * @param empId
 	 * @return
 	 */
-    int insertEyeProduct(EyeProduct value);
+	List<EyeProduct> findById(int empId) throws Exception;
 	/**
-	 * 插入EyeProduct中属性值不为null的数据到数据库
-	 * @param value
+	 * 查找用户信息
+	 * @param username
 	 * @return
 	 */
-    int insertNonEmptyEyeProduct(EyeProduct value);
+	EyeProduct queryUserInfo(String username);
+
 	/**
-	 * 通过EyeProduct的id删除EyeProduct
-	 * @param id
-	 * @return
+	 * 更新用户信息
+	 * @param eyeProduct
 	 */
-    int deleteEyeProductById(Integer id);
-	/**
-	 * 通过EyeProduct的id更新EyeProduct中的数据,包括null值
-	 * @param enti
-	 * @return
-	 */
-    int updateEyeProductById(EyeProduct enti);
-	/**
-	 * 通过EyeProduct的id更新EyeProduct中属性不为null的数据
-	 * @param enti
-	 * @return
-	 */
-    int updateNonEmptyEyeProductById(EyeProduct enti);
+	void updateUserInfo(EyeProduct eyeProduct);
 }

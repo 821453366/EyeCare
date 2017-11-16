@@ -29,9 +29,9 @@ public class menuController extends HttpServlet {
     }
 
     //库房
-    @RequestMapping("/storage")
+    @RequestMapping("/eyeProduct")
     public String storage() {
-        return "web/storage/storage";
+        return "web/eyeProduct/eyeProduct";
     }
 
     //

@@ -6,7 +6,7 @@ var navs = [{
 },{
     "title": "护理产品管理",
     "icon": "fa fa-users",
-    "href": "menu/customerce",
+    "href": "menu/eyeProduct",
     "spread": false
 },{
     "title": "护理回访",
