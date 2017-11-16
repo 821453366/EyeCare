@@ -27,10 +27,10 @@ public interface EyeProductService{
 
 	/**
 	 * 通过ID查询用户信息
-	 * @param empId
+	 * @param id
 	 * @return
 	 */
-	List<EyeProduct> findById(int empId) throws Exception;
+	List<EyeProduct> findById(int id) throws Exception;
 	/**
 	 * 查找用户信息
 	 * @param username

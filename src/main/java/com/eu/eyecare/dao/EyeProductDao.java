@@ -21,16 +21,16 @@ public interface EyeProductDao{
 
 	/**
 	 * 通过ID删除用户
-	 * @param empId
+	 * @param id
 	 */
-	void deleteUser(int empId) throws Exception;
+	void deleteUser(int id) throws Exception;
 
 	/**
 	 * 通过ID查询用户信息
-	 * @param empId
+	 * @param id
 	 * @return
 	 */
-	List<EyeProduct> findById(int empId) throws Exception;
+	List<EyeProduct> findById(int id) throws Exception;
 
 	/**
 	 * 查找用户信息

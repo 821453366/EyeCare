@@ -25,7 +25,6 @@ import java.util.Map;
 @RequestMapping("eyeProduct")
 public class eyeProductController {
 
-
     @Autowired
     private EyeProductService eyeProductService;
 
@@ -81,7 +80,8 @@ public class eyeProductController {
     public Map<String, Object> findById(int id) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            result.put("user", eyeProductService.findById(id));
+            List<EyeProduct> list =eyeProductService.findById(id);
+            result.put("user", list);
             result.put("msg", Constant.SEARCH_SUCCESS);
             result.put("result", true);
         } catch (Exception e) {

@@ -81,7 +81,6 @@
                onclick="cl.preview('{{item.pro_id}}')">
                 &#xe60a; 预览
             </a>
-            <button class='layui-btn layui-btn-small layui-icon' onclick="cl.updateInfo('{{item.pro_id}}')">&#xe642;编辑</button>
             <button data-id='1' data-opt='del' class='layui-btn layui-btn-danger layui-btn-small layui-icon'
                     onclick="cl.delete('{{item.pro_id}}')">
                 &#xe640;删除
@@ -94,44 +93,62 @@
 </body>
 <div id="addUser" style="display: none">
     <form class="layui-form layui-form-pane" id="update-form" style="padding-left: 35%;">
-        <div >
+        <div>
             <div style="width:100px; height: 140px;margin-left: 50px;">
                 <img id="imagesToUpdate" class="site-demo-upload"/>
             </div>
             <div style="margin-top: 100px;">
-                <input type="file" name="file" class="layui-upload-file" style="width: auto"
+                <input type="file" name="file" id="file" class="layui-upload-file" style="width: auto"
                        lay-title="头像上传">
             </div>
         </div>
         <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">用户ID：</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="empName" autocomplete="off" class="layui-input" placeholder="登录账号">
-                </div>
+            <label class="layui-form-label">产品名称：</label>
+            <div class="layui-input-inline">
+                <input  type="text" id = "proName" lay-verify="required"
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">密码：</label>
-                <div class="layui-input-inline">
-                    <input type="password" name="empPassword" autocomplete="off" class="layui-input"
-                           placeholder="登录密码">
-                </div>
+            <label class="layui-form-label">原价：</label>
+            <div class="layui-input-inline">
+                <input type="text" id = "proOprice" lay-verify="required"  autocomplete="off"
+                       class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">性别：</label>
-            <div class="layui-input-block">
-                <input type="radio" name="empSex" value="男" title="男" checked>
-                <input type="radio" name="empSex" value="女" title="女">
+            <label class="layui-form-label">售价：</label>
+            <div class="layui-input-inline">
+                <input type="text" id = "proNprice" lay-verify="required"  autocomplete="off"
+                       class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">权限：</label>
-            <div class="layui-input-block">
-                <input type="radio" name="empRank" value="1" title="管理员" checked>
-                <input type="radio" name="empRank" value="2" title="普通员工">
+            <label class="layui-form-label">库存：</label>
+            <div class="layui-input-inline">
+                <input type="text" id = "proAmount" lay-verify="required" autocomplete="off"
+                       class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类：</label>
+            <div class="layui-input-inline">
+                <input type="text" id = "categoryId" lay-verify="required" autocomplete="off"
+                       class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态：</label>
+            <div class="layui-input-inline">
+                <input type="text" id = "proState" lay-verify="required" autocomplete="off"
+                       class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">产品类型：</label>
+            <div class="layui-input-inline">
+                <input type="text" id = "proType" lay-verify="required" autocomplete="off"
+                       class="layui-input" >
             </div>
         </div>
         <div class="layui-input-block">
@@ -145,102 +162,66 @@
     <fieldset class="layui-elem-field layui-field-title" >
         <legend>管理员信息</legend>
     </fieldset>
-    <div style="padding-left: 25%;padding-top: 2%;">
+    <div style="padding-left: 35%;padding-top: 2%;">
         <form class="layui-form layui-form-pane" action="">
+            <div >
+                <div style="width:100px; height: 140px;margin-left: 50px;">
+                    <img id="imagesInfo" class="site-demo-upload"/>
+                </div>
+                <div style="margin-top: 100px;">
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">用户ID：</label>
-                <div class="layui-input-inline">
-                    <input readonly="readonly" type="text" id="adminNamePreview" lay-verify="required"
-                           autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">性别：</label>
+                <label class="layui-form-label">产品名称：</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="adminSexPreview" lay-verify="required" placeholder="待完善" autocomplete="off"
-                           class="layui-input" readonly="readonly">
+                    <input  type="text" id = "updateproName" lay-verify="required"
+                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">手机号：</label>
+                <label class="layui-form-label">原价：</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="adminPhonePreview" lay-verify="required" placeholder="待完善" autocomplete="off"
-                           class="layui-input" readonly="readonly">
+                    <input type="text" id = "updateproOprice" lay-verify="required"  autocomplete="off"
+                           class="layui-input" >
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">售价：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id = "updateproNprice" lay-verify="required"  autocomplete="off"
+                           class="layui-input" >
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">库存：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id = "updateproAmount" lay-verify="required" autocomplete="off"
+                           class="layui-input" >
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id = "updatecategoryId" lay-verify="required" autocomplete="off"
+                           class="layui-input" >
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">状态：</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" lay-verify="required"value="可用" autocomplete="off"
-                           class="layui-input" readonly="readonly">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">权限：</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="adminRankPreview" lay-verify="required" placeholder="请输入" autocomplete="off"
-                           class="layui-input" readonly="readonly">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">账号创建日期：</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="adminDatePreview" lay-verify="required" placeholder="请输入" autocomplete="off"
-                           class="layui-input" readonly="readonly">
-                </div>
-            </div>
-
-        </form>
-    </div>
-</div>
-<div id="updateInfo" style="display: none">
-    <fieldset class="layui-elem-field layui-field-title" >
-        <legend>修改信息</legend>
-    </fieldset>
-    <div style="padding-left: 25%;padding-top: 2%;">
-        <form class="layui-form layui-form-pane" action="" id="updateUserInfo">
-            <input  type="text" id="empIdUpdate" name = "empId" lay-verify="required"
-                    autocomplete="off" class="layui-input" style="display: none">
-            <div class="layui-form-item">
-                <label class="layui-form-label">用户ID:</label>
-                <div class="layui-input-inline">
-                    <input  type="text" id="adminRealnameUpdate" name = "empName" lay-verify="required"
-                           autocomplete="off" class="layui-input" readonly>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">手机号：</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="empPhone" id ="adminPhoneUpdate"lay-verify="required" placeholder="待完善" autocomplete="off"
+                    <input type="text" id = "updateproState" lay-verify="required" autocomplete="off"
                            class="layui-input" >
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">性别：</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="empSex" value="男" title="男" checked>
-                    <input type="radio" name="empSex" value="女" title="女">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">权限：</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="empRank" value="1" title="管理员" checked>
-                    <input type="radio" name="empRank" value="2" title="普通用户">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">账号创建日期：</label>
+                <label class="layui-form-label">产品类型：</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="empTime" id ="adminDateUpdate" lay-verify="required" placeholder="请输入" autocomplete="off"
-                           class="layui-input" readonly="readonly">
+                    <input type="text" id = "updateproType" lay-verify="required" autocomplete="off"
+                           class="layui-input" >
                 </div>
             </div>
-            <button style="margin-left: 80px; width: 150px;margin-bottom: 50px;" class="layui-btn"
-                    onclick="cl.updateInfoAjax()"><i class="layui-icon">&#xe61f;</i>
-                完成修改
-            </button>
+
         </form>
     </div>
 </div>
@@ -262,7 +243,6 @@
             url: '${baseurl}/eyeProduct/updateImage' //上传接口
             , success: function (res) { //上传成功后的回调
                 if (res.result) {
-                    alert(1111)
                     $("#imagesToUpdate").text("").attr("src", HEAD_IMAGE_PREFIX + res.data);
                     imgName = res.data;
                 }
@@ -310,18 +290,22 @@
                     {id:id},
                     function (data) {
                         let user = data.user[0];
-                        $("#adminNamePreview").val(user.empName);
-                        $("#adminSexPreview").val(user.empSex);
-                        $("#adminPhonePreview").val(user.empPhone);
-                        $("#adminRankPreview").val(user.empRank == 1 ?"管理员":"普通员工");
-                        $("#adminDatePreview").val(user.empTime);
+                        $("#imagesInfo").text("").attr("src", HEAD_IMAGE_PREFIX + user.file);
+                        imgName = user.img;
+                        $("#updateproName").val(user.proName);
+                        $("#updateproOprice").val(user.proOprice);
+                        $("#updateproNprice").val(user.proNprice);
+                        $("#updateproAmount").val(user.proAmount);
+                        $("#updatecategoryId").val(user.categoryId);
+                        $("#updateproState").val(user.proState);
+                        $("#updateproType").val(user.proType);
                     }
                 )
                 layer.open({
                     type: 1,
                     title: '管理员信息'
                     , content: $("#preview"),
-                    area: ['40%', '70%']
+                    area: ['100%', '100%']
                 });
 
             },
@@ -363,8 +347,24 @@
                 });
             },
             addUserAjax: function () {
-                let eyeEmp = $("#update-form").serialize();
-                $.post("${pageContext.request.contextPath}/eyeProduct/addUser", eyeEmp, function (data) {
+                let proName = $("#proName").val();
+                let proOprice = $("#proOprice").val();
+                let proNprice = $("#proNprice").val();
+                let proAmount = $("#proAmount").val();
+                let categoryId = $("#categoryId").val();
+                let proState = $("#proState").val();
+                let proType = $("#proType").val();
+                $.post("${baseurl}/eyeProduct/addUser",{
+                    proName:proName,
+                    proOprice:proOprice,
+                    proNprice:proNprice,
+                    proAmount:proAmount,
+                    categoryId:categoryId,
+                    proState:proState,
+                    proType:proType,
+                    file:imgName
+                }, function (data) {
+
                     layer.msg(data.msg, {time: 500});
                     if (data.result) {
                         setTimeout("location.reload()", 1000);

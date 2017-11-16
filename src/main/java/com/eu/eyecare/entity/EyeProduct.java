@@ -1,37 +1,42 @@
 package com.eu.eyecare.entity;
 public class EyeProduct {
     private Integer proId;
+    private String proName;
     private Double proOprice;
     private Double proNprice;
     private Integer proAmount;
     private Integer categoryId;
     private String proState;
     private String proType;
+    private String file;
     private String proImg;
-    public EyeProduct() {
-        super();
+
+    public String getProType() {
+        return proType;
     }
-    public EyeProduct(Integer proId,Double proOprice,Double proNprice,Integer proAmount,Integer categoryId,String proState,String proType,String proImg) {
-        super();
-        this.proId = proId;
-        this.proOprice = proOprice;
-        this.proNprice = proNprice;
-        this.proAmount = proAmount;
-        this.categoryId = categoryId;
-        this.proState = proState;
+
+    public void setProType(String proType) {
         this.proType = proType;
-        this.proImg = proImg;
     }
+
     public Integer getProId() {
-        return this.proId;
+        return proId;
     }
 
     public void setProId(Integer proId) {
         this.proId = proId;
     }
 
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName;
+    }
+
     public Double getProOprice() {
-        return this.proOprice;
+        return proOprice;
     }
 
     public void setProOprice(Double proOprice) {
@@ -39,7 +44,7 @@ public class EyeProduct {
     }
 
     public Double getProNprice() {
-        return this.proNprice;
+        return proNprice;
     }
 
     public void setProNprice(Double proNprice) {
@@ -47,7 +52,7 @@ public class EyeProduct {
     }
 
     public Integer getProAmount() {
-        return this.proAmount;
+        return proAmount;
     }
 
     public void setProAmount(Integer proAmount) {
@@ -55,7 +60,7 @@ public class EyeProduct {
     }
 
     public Integer getCategoryId() {
-        return this.categoryId;
+        return categoryId;
     }
 
     public void setCategoryId(Integer categoryId) {
@@ -63,27 +68,26 @@ public class EyeProduct {
     }
 
     public String getProState() {
-        return this.proState;
+        return proState;
     }
 
     public void setProState(String proState) {
         this.proState = proState;
     }
 
-    public String getProType() {
-        return this.proType;
+    public String getFile() {
+        return file;
     }
 
-    public void setProType(String proType) {
-        this.proType = proType;
+    public void setFile(String file) {
+        this.file = file;
     }
 
     public String getProImg() {
-        return this.proImg;
+        return proImg;
     }
 
     public void setProImg(String proImg) {
         this.proImg = proImg;
     }
-
 }

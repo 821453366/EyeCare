@@ -10,16 +10,16 @@
         SELECT count(1)
         FROM eye_product where pro_name like #{eyeProductReal}
     </select>
-    <!--<update id="addUser" parameterType="EyeEmp">-->
-        <!--INSERT INTO eye_emp(emp_name,emp_password,emp_sex,emp_time,emp_rank)-->
-        <!--VALUES (#{empName},#{empPassword},#{empSex},#{empTime},#{empRank})-->
-    <!--</update>-->
-    <!--<delete id="deleteUser" parameterType="int">-->
-        <!--delete  from eye_emp where emp_id =#{empId}-->
-    <!--</delete>-->
-    <!--<select id="findById" parameterType="int" resultType="EyeEmp">-->
-        <!--SELECT * from eye_emp where emp_id=#{empId}-->
-    <!--</select>-->
+    <update id="addUser" parameterType="EyeEmp">
+        INSERT INTO eye_product(pro_name,pro_oprice,pro_nprice,pro_amount,category_id,pro_state,pro_type,file)
+        VALUES (#{proName},#{proOprice},#{proNprice},#{proAmount},#{categoryId},#{proState},#{proType},#{file})
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete  from eye_product where pro_id =#{id}
+    </delete>
+    <select id="findById" parameterType="int" resultType="EyeProduct">
+        SELECT * from eye_product where pro_id=#{id}
+    </select>
     <!--<update id="updateUserInfo" parameterType="EyeEmp">-->
         <!--UPDATE eye_emp-->
         <!--SET emp_name = #{empName},emp_phone=#{empPhone},-->

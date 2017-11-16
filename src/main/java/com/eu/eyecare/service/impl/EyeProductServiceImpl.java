@@ -40,8 +40,8 @@ public class EyeProductServiceImpl implements EyeProductService{
         eyeProductDao.deleteUser(id);
     }
     @Override
-    public List<EyeProduct> findById(int proId)throws Exception {
-        return eyeProductDao.findById(proId);
+    public List<EyeProduct> findById(int id)throws Exception {
+        return eyeProductDao.findById(id);
     }
 
     @Override

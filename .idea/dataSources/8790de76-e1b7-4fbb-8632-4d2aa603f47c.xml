@@ -109,13 +109,13 @@
       <Position>8</Position>
       <DataType>varchar(500)|0</DataType>
     </column>
-    <column id="45" parent="19" name="pro_img">
-      <Position>9</Position>
-      <DataType>varchar(400)|0</DataType>
-    </column>
-    <column id="46" parent="19" name="pro_name">
+    <column id="45" parent="19" name="pro_name">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="46" parent="19" name="file">
+      <Position>9</Position>
+      <DataType>varchar(400)|0</DataType>
     </column>
     <key id="47" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
