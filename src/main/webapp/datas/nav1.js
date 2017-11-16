@@ -1,12 +1,7 @@
 var navs = [{
-    "title": "产品管理",
-    "icon": "fa fa-newspaper-o",
-    "href": "menu/Sale",
-    "spread": false
-},{
     "title": "护理推送",
     "icon": "fa fa-newspaper-o",
-    "href": "menu/recovery",
+    "href": "menu/pushNursing",
     "spread": false
 },{
     "title": "护理产品管理",
@@ -21,7 +16,7 @@ var navs = [{
 },{
     "title": "用户信息",
     "icon": "fa fa-users",
-    "href": "menu/user",
+    "href": "menu/customer",
     "spread": false
 },{
     "title": "员工管理",

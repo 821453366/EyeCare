@@ -16,15 +16,16 @@ public class menuController extends HttpServlet {
     }
 
     //客户
-    @RequestMapping("/customerce")
+    @RequestMapping("/customer")
     public String customerce() {
-        return "web/customerce/customerce";
+        return "web/customer/customer";
+
     }
 
     //废钢类型
-    @RequestMapping("/steel")
+    @RequestMapping("/pushNursing")
     public String steel() {
-        return "web/steel/steel";
+        return "web/pushNursing/pushNursing";
     }
 
     //库房

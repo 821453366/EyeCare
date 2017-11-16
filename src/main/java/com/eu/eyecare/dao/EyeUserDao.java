@@ -1,57 +1,47 @@
 package com.eu.eyecare.dao;
 import com.eu.eyecare.entity.EyeUser;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
+import java.util.Map;
+
 public interface EyeUserDao{
 	/**
-	 * 获得EyeUser数据的总行数
-	 * @return
+	 * 分页查询数据
 	 */
-    long getEyeUserRowCount();
+	List<Map<String, Object>> queryUser(Map<String, Object> data) throws Exception;
+
+	Long queryUserCount(String username) throws Exception;
+
 	/**
-	 * 获得EyeUser数据集合
-	 * @return
+	 * 插入管理员
+	 *
+	 * @param eyeUser
 	 */
-    List<EyeUser> selectEyeUser();
+	void addUser(EyeUser eyeUser) throws Exception;
+
 	/**
-	 * 获得一个EyeUser对象,以参数EyeUser对象中不为空的属性作为条件进行查询
-	 * @param obj
-	 * @return
+	 * 通过ID删除用户
+	 * @param empId
 	 */
-    EyeUser selectEyeUserByObj(EyeUser obj);
+	void deleteUser(int empId) throws Exception;
+
 	/**
-	 * 通过EyeUser的id获得EyeUser对象
-	 * @param id
+	 * 通过ID查询用户信息
+	 * @param empId
 	 * @return
 	 */
-    EyeUser selectEyeUserById(Integer id);
+	List<EyeUser> findById(int empId) throws Exception;
+
 	/**
-	 * 插入EyeUser到数据库,包括null值
-	 * @param value
+	 * 查找用户信息
+	 * @param username
 	 * @return
 	 */
-    int insertEyeUser(EyeUser value);
+	EyeUser queryUserInfo(String username);
 	/**
-	 * 插入EyeUser中属性值不为null的数据到数据库
-	 * @param value
-	 * @return
+	 * 更新用户信息
+	 * @param eyeUser
 	 */
-    int insertNonEmptyEyeUser(EyeUser value);
-	/**
-	 * 通过EyeUser的id删除EyeUser
-	 * @param id
-	 * @return
-	 */
-    int deleteEyeUserById(Integer id);
-	/**
-	 * 通过EyeUser的id更新EyeUser中的数据,包括null值
-	 * @param enti
-	 * @return
-	 */
-    int updateEyeUserById(EyeUser enti);
-	/**
-	 * 通过EyeUser的id更新EyeUser中属性不为null的数据
-	 * @param enti
-	 * @return
-	 */
-    int updateNonEmptyEyeUserById(EyeUser enti);
+	void updateUserInfo(EyeUser eyeUser);
 }

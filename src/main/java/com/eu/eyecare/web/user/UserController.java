@@ -2,7 +2,6 @@ package com.eu.eyecare.web.user;
 
 import com.eu.eyecare.dto.Result;
 import com.eu.eyecare.entity.EyeEmp;
-import com.eu.eyecare.entity.EyeEmp;
 import com.eu.eyecare.service.UserService;
 import com.eu.eyecare.utils.Constant;
 import com.eu.eyecare.utils.PageUtil;

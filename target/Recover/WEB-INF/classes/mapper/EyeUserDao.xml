@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eu.eyecare.dao.EyeUserDao">
+    <select id="queryUser" resultType="map"  parameterType="map">
+        SELECT * FROM eye_user
+        where username like #{username} order by user_id DESC  LIMIT #{start}, #{end}
+    </select>
+
+    <select id="queryUserCount" resultType="long" parameterType="string">
+        SELECT count(1)
+        FROM eye_user where username like #{username}
+    </select>
+    <!--<update id="addUser" parameterType="EyeEmp">-->
+        <!--INSERT INTO eye_user(emp_name,emp_password,emp_sex,emp_time,emp_rank)-->
+        <!--VALUES (#{empName},#{empPassword},#{empSex},#{empTime},#{empRank})-->
+    <!--</update>-->
+    <!--<delete id="deleteUser" parameterType="int">-->
+        <!--delete  from eye_user where emp_id =#{empId}-->
+    <!--</delete>-->
+    <!--<select id="findById" parameterType="int" resultType="EyeEmp">-->
+        <!--SELECT * from eye_user where emp_id=#{empId}-->
+    <!--</select>-->
+    <!--<update id="updateUserInfo" parameterType="EyeEmp">-->
+        <!--UPDATE eye_user-->
+        <!--SET emp_name = #{empName},emp_phone=#{empPhone},-->
+        <!--emp_sex=#{empSex},emp_rank=#{empRank},emp_time=#{empTime}-->
+        <!--WHERE emp_id = #{empId}-->
+    <!--</update>-->
+</mapper>

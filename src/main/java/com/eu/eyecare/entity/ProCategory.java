@@ -3,17 +3,20 @@ public class ProCategory {
     private Integer catId;
     private String catName;
     private String catBrand;
-    private String catEffect;
+    private String catDate;
+
+    public String getCatDate() {
+        return catDate;
+    }
+
+    public void setCatDate(String catDate) {
+        this.catDate = catDate;
+    }
+
     public ProCategory() {
         super();
     }
-    public ProCategory(Integer catId,String catName,String catBrand,String catEffect) {
-        super();
-        this.catId = catId;
-        this.catName = catName;
-        this.catBrand = catBrand;
-        this.catEffect = catEffect;
-    }
+
     public Integer getCatId() {
         return this.catId;
     }
@@ -36,14 +39,6 @@ public class ProCategory {
 
     public void setCatBrand(String catBrand) {
         this.catBrand = catBrand;
-    }
-
-    public String getCatEffect() {
-        return this.catEffect;
-    }
-
-    public void setCatEffect(String catEffect) {
-        this.catEffect = catEffect;
     }
 
 }

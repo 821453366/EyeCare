@@ -1,53 +1,73 @@
 package com.eu.eyecare.service.impl;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.eu.eyecare.dao.EyeUserDao;
+import com.eu.eyecare.dao.UserDao;
+import com.eu.eyecare.entity.EyeUser;
 import com.eu.eyecare.entity.EyeUser;
 import com.eu.eyecare.service.EyeUserService;
+import com.eu.eyecare.utils.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class EyeUserServiceImpl implements EyeUserService{
+    @Autowired
     private EyeUserDao eyeUserDao;
+
     @Override
-    public long getEyeUserRowCount(){
-        return eyeUserDao.getEyeUserRowCount();
-    }
-    @Override
-    public List<EyeUser> selectEyeUser(){
-        return eyeUserDao.selectEyeUser();
-    }
-    @Override
-    public EyeUser selectEyeUserByObj(EyeUser obj){
-        return eyeUserDao.selectEyeUserByObj(obj);
-    }
-    @Override
-    public EyeUser selectEyeUserById(Integer id){
-        return eyeUserDao.selectEyeUserById(id);
-    }
-    @Override
-    public int insertEyeUser(EyeUser value){
-        return eyeUserDao.insertEyeUser(value);
-    }
-    @Override
-    public int insertNonEmptyEyeUser(EyeUser value){
-        return eyeUserDao.insertNonEmptyEyeUser(value);
-    }
-    @Override
-    public int deleteEyeUserById(Integer id){
-        return eyeUserDao.deleteEyeUserById(id);
-    }
-    @Override
-    public int updateEyeUserById(EyeUser enti){
-        return eyeUserDao.updateEyeUserById(enti);
-    }
-    @Override
-    public int updateNonEmptyEyeUserById(EyeUser enti){
-        return eyeUserDao.updateNonEmptyEyeUserById(enti);
+    public List<Map<String, Object>> insertUser(PageUtil page, String eyeName) throws Exception {
+        String eyeUserReal="%"+eyeName+"%";
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
+        data.put("end", page.getPageSize());
+        data.put("username",eyeUserReal);
+        page.setTotalSize(eyeUserDao.queryUserCount(eyeUserReal));
+
+        System.out.println("dao:");
+        System.out.println("dao:"+eyeUserDao.queryUser(data));
+
+        return eyeUserDao.queryUser(data);
     }
 
-    public EyeUserDao getEyeUserDao() {
-        return this.eyeUserDao;
+    @Override
+    public void addUser(EyeUser eyeUser) throws Exception{
+
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
+        String date = dateFormat.format( now );
+
+        eyeUserDao.addUser(eyeUser);
+
+    }
+    @Override
+    public void deleteUser(int id) throws Exception{
+        eyeUserDao.deleteUser(id);
+    }
+    @Override
+    public List<EyeUser> findById(int empId)throws Exception {
+        return eyeUserDao.findById(empId);
     }
 
-    public void setEyeUserDao(EyeUserDao eyeUserDao) {
-        this.eyeUserDao = eyeUserDao;
+    @Override
+    public EyeUser queryUserInfo(String username) {
+        try {
+            return eyeUserDao.queryUserInfo(username);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    @Override
+    public void updateUserInfo(EyeUser eyeUser) {
+        try {
+            eyeUserDao.updateUserInfo(eyeUser);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

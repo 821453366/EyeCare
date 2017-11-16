@@ -142,7 +142,7 @@
     </column>
     <column id="52" parent="20" name="birthday">
       <Position>6</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>varchar(20)|0</DataType>
     </column>
     <column id="53" parent="20" name="phone">
       <Position>7</Position>
@@ -243,13 +243,13 @@
     </column>
     <column id="75" parent="23" name="cat_name">
       <Position>2</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(200)|0</DataType>
     </column>
     <column id="76" parent="23" name="cat_brand">
       <Position>3</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(2000)|0</DataType>
     </column>
-    <column id="77" parent="23" name="cat_effect">
+    <column id="77" parent="23" name="cat_date">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
