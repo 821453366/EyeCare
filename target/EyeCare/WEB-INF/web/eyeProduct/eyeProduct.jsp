@@ -257,6 +257,17 @@
             form = layui.form(),
             laytpl = layui.laytpl;
 
+        //图片上传
+        layui.upload({
+            url: '${baseurl}/eyeProduct/updateImage' //上传接口
+            , success: function (res) { //上传成功后的回调
+                if (res.result) {
+                    alert(1111)
+                    $("#imagesToUpdate").text("").attr("src", HEAD_IMAGE_PREFIX + res.data);
+                    imgName = res.data;
+                }
+            }
+        });
         cl = {
             page: function () {
                 layui.laypage({
@@ -375,19 +386,6 @@
         }
         $(function () {
             cl.list();
-        });
-    });
-
-    //图片上传
-    layui.use('upload', function () {
-        layui.upload({
-            url: '${baseurl}/eyeProduct/updateImage' //上传接口
-            , success: function (res) { //上传成功后的回调
-                if (res.result) {
-                  $("#imagesToUpdate").text("").attr("src", HEAD_IMAGE_PREFIX + res.data);
-                    imgName = res.data;
-                }
-            }
         });
     });
 </script>

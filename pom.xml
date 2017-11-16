@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.eu</groupId>
-  <artifactId>Recover</artifactId>
+  <artifactId>EyeCare</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Recover Maven Webapp</name>
+  <name>EyeCare Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -181,7 +181,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>Recover</finalName>
+    <finalName>EyeCare</finalName>
       <plugins>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
