@@ -35,9 +35,9 @@ public class menuController extends HttpServlet {
     }
 
     //
-    @RequestMapping("/stock")
+    @RequestMapping("/revisit")
     public String stock() {
-        return "web/stock/stock";
+        return "web/revisit/revisit";
     }
 
     @RequestMapping("/Sale")

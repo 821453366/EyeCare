@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eu.eyecare.dao.RevisitDao">
+    <select id="queryRevist" resultType="map" parameterType="map">
+        SELECT * FROM revisit
+         order by re_id DESC  LIMIT #{start}, #{end}
+    </select>
+
+    <select id="queryRevistCount" resultType="long" >
+        SELECT count(1)
+        FROM revisit
+    </select>
+    <update id="addRevist" parameterType="EyeEmp">
+        INSERT INTO revisit(emp_id,order_id,re_count,re_info,re_time,order_desc)
+        VALUES (#{empId},#{orderId},#{reCount},#{reInfo},#{reTime},#{orderDesc})
+    </update>
+    <delete id="deleteRevist" parameterType="int">
+        delete  from revisit where re_id =#{id}
+    </delete>
+    <select id="findById" parameterType="int" resultType="EyeProduct">
+        SELECT * from eye_product where pro_id=#{id}
+    </select>
+    <!--<update id="updateRevisitInfo" parameterType="EyeEmp">-->
+    <!--UPDATE eye_emp-->
+    <!--SET emp_name = #{empName},emp_phone=#{empPhone},-->
+    <!--emp_sex=#{empSex},emp_rank=#{empRank},emp_time=#{empTime}-->
+    <!--WHERE emp_id = #{empId}-->
+    <!--</update>-->
+
+</mapper>

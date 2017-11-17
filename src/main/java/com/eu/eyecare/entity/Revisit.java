@@ -5,23 +5,11 @@ public class Revisit {
     private Integer orderId;
     private Integer reCount;
     private String reInfo;
-    private java.util.Date reTime;
+    private String reTime;
     private String orderDesc;
-    public Revisit() {
-        super();
-    }
-    public Revisit(Integer reId,Integer empId,Integer orderId,Integer reCount,String reInfo,java.util.Date reTime,String orderDesc) {
-        super();
-        this.reId = reId;
-        this.empId = empId;
-        this.orderId = orderId;
-        this.reCount = reCount;
-        this.reInfo = reInfo;
-        this.reTime = reTime;
-        this.orderDesc = orderDesc;
-    }
+
     public Integer getReId() {
-        return this.reId;
+        return reId;
     }
 
     public void setReId(Integer reId) {
@@ -29,7 +17,7 @@ public class Revisit {
     }
 
     public Integer getEmpId() {
-        return this.empId;
+        return empId;
     }
 
     public void setEmpId(Integer empId) {
@@ -37,7 +25,7 @@ public class Revisit {
     }
 
     public Integer getOrderId() {
-        return this.orderId;
+        return orderId;
     }
 
     public void setOrderId(Integer orderId) {
@@ -45,7 +33,7 @@ public class Revisit {
     }
 
     public Integer getReCount() {
-        return this.reCount;
+        return reCount;
     }
 
     public void setReCount(Integer reCount) {
@@ -53,27 +41,26 @@ public class Revisit {
     }
 
     public String getReInfo() {
-        return this.reInfo;
+        return reInfo;
     }
 
     public void setReInfo(String reInfo) {
         this.reInfo = reInfo;
     }
 
-    public java.util.Date getReTime() {
-        return this.reTime;
+    public String getReTime() {
+        return reTime;
     }
 
-    public void setReTime(java.util.Date reTime) {
+    public void setReTime(String reTime) {
         this.reTime = reTime;
     }
 
     public String getOrderDesc() {
-        return this.orderDesc;
+        return orderDesc;
     }
 
     public void setOrderDesc(String orderDesc) {
         this.orderDesc = orderDesc;
     }
-
 }

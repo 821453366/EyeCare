@@ -1,57 +1,45 @@
 package com.eu.eyecare.dao;
 import com.eu.eyecare.entity.Revisit;
 import java.util.List;
+import java.util.Map;
+
 public interface RevisitDao{
 	/**
-	 * 获得Revisit数据的总行数
-	 * @return
+	 * 分页查询数据
 	 */
-    long getRevisitRowCount();
+	List<Map<String, String>> queryRevist(Map<String, Object> data) throws Exception;
+
+	Long queryRevistCount() throws Exception;
+
 	/**
-	 * 获得Revisit数据集合
-	 * @return
+	 * 插入管理员
+	 *
+	 * @param revisit
 	 */
-    List<Revisit> selectRevisit();
+	void addRevist(Revisit revisit) throws Exception;
+
 	/**
-	 * 获得一个Revisit对象,以参数Revisit对象中不为空的属性作为条件进行查询
-	 * @param obj
-	 * @return
+	 * 通过ID删除用户
+	 * @param id
 	 */
-    Revisit selectRevisitByObj(Revisit obj);
+	void deleteRevist(int id) throws Exception;
+
 	/**
-	 * 通过Revisit的id获得Revisit对象
+	 * 通过ID查询用户信息
 	 * @param id
 	 * @return
 	 */
-    Revisit selectRevisitById(Object id);
+	List<Revisit> findById(int id) throws Exception;
+
 	/**
-	 * 插入Revisit到数据库,包括null值
-	 * @param value
+	 * 查找用户信息
+	 * @param username
 	 * @return
 	 */
-    int insertRevisit(Revisit value);
+	Revisit queryRevistInfo(String username);
 	/**
-	 * 插入Revisit中属性值不为null的数据到数据库
-	 * @param value
-	 * @return
+	 * 更新用户信息
+	 * @param revisit
 	 */
-    int insertNonEmptyRevisit(Revisit value);
-	/**
-	 * 通过Revisit的id删除Revisit
-	 * @param id
-	 * @return
-	 */
-    int deleteRevisitById(Object id);
-	/**
-	 * 通过Revisit的id更新Revisit中的数据,包括null值
-	 * @param enti
-	 * @return
-	 */
-    int updateRevisitById(Revisit enti);
-	/**
-	 * 通过Revisit的id更新Revisit中属性不为null的数据
-	 * @param enti
-	 * @return
-	 */
-    int updateNonEmptyRevisitById(Revisit enti);
+	void updateRevistInfo(Revisit revisit);
 }

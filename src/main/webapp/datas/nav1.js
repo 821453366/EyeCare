@@ -11,7 +11,7 @@ var navs = [{
 },{
     "title": "护理回访",
     "icon": "fa fa-window-minimize",
-    "href": "menu/steel",
+    "href": "menu/revisit",
     "spread": false
 },{
     "title": "用户信息",

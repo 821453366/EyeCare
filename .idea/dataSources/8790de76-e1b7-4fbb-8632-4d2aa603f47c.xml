@@ -319,6 +319,8 @@
     <column id="92" parent="26" name="re_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
     <column id="93" parent="26" name="emp_id">
       <Position>2</Position>
@@ -338,11 +340,16 @@
     </column>
     <column id="97" parent="26" name="re_time">
       <Position>6</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>varchar(20)|0</DataType>
     </column>
     <column id="98" parent="26" name="order_desc">
       <Position>7</Position>
       <DataType>varchar(500)|0</DataType>
     </column>
+    <key id="99" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>re_id</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

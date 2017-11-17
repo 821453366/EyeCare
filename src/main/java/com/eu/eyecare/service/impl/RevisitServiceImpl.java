@@ -1,53 +1,62 @@
 package com.eu.eyecare.service.impl;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.eu.eyecare.dao.RevisitDao;
 import com.eu.eyecare.entity.Revisit;
 import com.eu.eyecare.service.RevisitService;
+import com.eu.eyecare.utils.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class RevisitServiceImpl implements RevisitService{
+    @Autowired
     private RevisitDao revisitDao;
+
     @Override
-    public long getRevisitRowCount(){
-        return revisitDao.getRevisitRowCount();
-    }
-    @Override
-    public List<Revisit> selectRevisit(){
-        return revisitDao.selectRevisit();
-    }
-    @Override
-    public Revisit selectRevisitByObj(Revisit obj){
-        return revisitDao.selectRevisitByObj(obj);
-    }
-    @Override
-    public Revisit selectRevisitById(Object id){
-        return revisitDao.selectRevisitById(id);
-    }
-    @Override
-    public int insertRevisit(Revisit value){
-        return revisitDao.insertRevisit(value);
-    }
-    @Override
-    public int insertNonEmptyRevisit(Revisit value){
-        return revisitDao.insertNonEmptyRevisit(value);
-    }
-    @Override
-    public int deleteRevisitById(Object id){
-        return revisitDao.deleteRevisitById(id);
-    }
-    @Override
-    public int updateRevisitById(Revisit enti){
-        return revisitDao.updateRevisitById(enti);
-    }
-    @Override
-    public int updateNonEmptyRevisitById(Revisit enti){
-        return revisitDao.updateNonEmptyRevisitById(enti);
+    public List<Map<String, String>> insertRevist(PageUtil page, String proName) throws Exception {
+        String revisitReal="%"+proName+"%";
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("start", (page.getCurrentIndex() - 1) * page.getPageSize());
+        data.put("end", page.getPageSize());
+        page.setTotalSize(revisitDao.queryRevistCount());
+
+        return revisitDao.queryRevist(data);
     }
 
-    public RevisitDao getRevisitDao() {
-        return this.revisitDao;
+    @Override
+    public void addRevist(Revisit revisit) throws Exception{
+
+
+        revisitDao.addRevist(revisit);
+
+    }
+    @Override
+    public void deleteRevist(int id) throws Exception{
+        revisitDao.deleteRevist(id);
+    }
+    @Override
+    public List<Revisit> findById(int id)throws Exception {
+        return revisitDao.findById(id);
     }
 
-    public void setRevisitDao(RevisitDao revisitDao) {
-        this.revisitDao = revisitDao;
+    @Override
+    public Revisit queryRevistInfo(String username) {
+        try {
+            return revisitDao.queryRevistInfo(username);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    @Override
+    public void updateRevistInfo(Revisit revisit) {
+        try {
+            revisitDao.updateRevistInfo(revisit);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

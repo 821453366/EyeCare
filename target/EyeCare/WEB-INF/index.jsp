@@ -99,7 +99,7 @@
         <div class="layui-main">
             <div class="admin-login-box">
                 <a class="logo" style="left: 0;width: 240px;">
-                    <span style="font-size: 20px;font-weight: bold;color: #FFFFFF">腾龙太阳光眼睛护理平台</span>
+                    <span style="font-size: 20px;font-weight: bold;color: #FFFFFF">腾龙太阳光眼睛护理后台</span>
                 </a>
 
             </div>
@@ -146,7 +146,7 @@
         <div class="layui-main">
             <p><br></p>
             <p>
-                <a href="#" target="_blank">腾龙太阳光眼睛护理平台 © 2017</a>
+                <a href="#" target="_blank">腾龙太阳光眼睛护理后台 © 2017</a>
             </p>
         </div>
     </div>

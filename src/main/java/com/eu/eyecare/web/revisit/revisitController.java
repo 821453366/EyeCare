@@ -1,9 +1,9 @@
-package com.eu.eyecare.web.eyeProduct;
+package com.eu.eyecare.web.revisit;
 
 import com.eu.eyecare.dto.Result;
-import com.eu.eyecare.entity.EyeProduct;
-import com.eu.eyecare.service.EyeProductService;
-import com.eu.eyecare.service.UserService;
+import com.eu.eyecare.entity.Revisit;
+import com.eu.eyecare.service.RevisitService;
+import com.eu.eyecare.service.RevisitService;
 import com.eu.eyecare.utils.Constant;
 import com.eu.eyecare.utils.ImgUtil;
 import com.eu.eyecare.utils.PageUtil;
@@ -17,21 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @Controller
-@RequestMapping("eyeProduct")
-public class eyeProductController {
-
+@RequestMapping("revisit")
+public class revisitController {
     @Autowired
-    private EyeProductService eyeProductService;
+    private RevisitService revisitService;
 
-    @RequestMapping("/findUser")
+    @RequestMapping("/findRevist")
     @ResponseBody
     public Map<String, Object> insertProfession(PageUtil page, String proName){
         Map<String, Object> data = new HashMap<String, Object>();
         List<Map<String,String>> eye;
         try {
-            eye = eyeProductService.insertUser(page,proName);
+            eye = revisitService.insertRevist(page,proName);
             data.put("user", eye);
             data.put("page", page);
             data.put("result", true);
@@ -44,11 +42,11 @@ public class eyeProductController {
         return data;
     }
 
-    @RequestMapping("/addUser")
+    @RequestMapping("/addRevist")
     @ResponseBody
-    public Result addUser(EyeProduct eyeProduct) {
+    public Result addRevist(Revisit revisit) {
         try {
-            eyeProductService.addUser(eyeProduct);
+            revisitService.addRevist(revisit);
             return Result.success(null, Constant.ADD_SUCCESS);
         } catch (Exception e) {
             new RuntimeException(e);
@@ -57,12 +55,12 @@ public class eyeProductController {
         return Result.failure(null, Constant.ADD_FAILURE);
     }
 
-    @RequestMapping("/deleteUser")
+    @RequestMapping("/deleteRevist")
     @ResponseBody
-    public Map<String, Object> deleteUser(int id) {
+    public Map<String, Object> deleteRevist(int id) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            eyeProductService.deleteUser(id);
+            revisitService.deleteRevist(id);
             result.put("msg", Constant.DELETE_SUCCESS);
             result.put("result", true);
         } catch (Exception e) {
@@ -77,7 +75,7 @@ public class eyeProductController {
     public Map<String, Object> findById(int id) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            List<EyeProduct> list =eyeProductService.findById(id);
+            List<Revisit> list =revisitService.findById(id);
             result.put("user", list);
             result.put("msg", Constant.SEARCH_SUCCESS);
             result.put("result", true);
@@ -91,10 +89,10 @@ public class eyeProductController {
     //用户信息
     @RequestMapping("/updateInfoAjax")
     @ResponseBody
-    public Map<String, Object> updateInfoAjax(EyeProduct eyeProduct) {
+    public Map<String, Object> updateInfoAjax(Revisit revisit) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            eyeProductService.updateUserInfo(eyeProduct);
+            revisitService.updateRevistInfo(revisit);
             result.put("msg", Constant.UPDATE_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
